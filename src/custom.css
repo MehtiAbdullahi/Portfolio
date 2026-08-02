@@ -1,0 +1,339 @@
+@import "./reset.css";
+
+/* 
+
+!=-=-=-=-=-=-=-=-=-=-
+
+?    Persian Font
+
+!=-=-=-=-=-=-=-=-=-=-
+
+*/
+
+@font-face {
+  font-family: lato;
+  src: url(../public/font/Lato-Light.ttf) format(woff2);
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: lato;
+  src: url(../public/font/Lato-Regular.ttf) format(woff2);
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: lato;
+  src: url(../public/font/Lato-Bold.ttf) format(woff2);
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: lato;
+  src: url(../public/font/Lato-Black.ttf) format(woff2);
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: logo-singer;
+  src: url(../public/font/JAKIO.ttf) format(woff2);
+  font-style: normal;
+}
+
+/* 
+
+!=-=-=-=-=-=-=-=-=-=-
+
+?    English Font
+
+!=-=-=-=-=-=-=-=-=-=-
+
+*/
+
+@font-face {
+  font-family: azarmehr;
+  src: url(../public/font/AzarMehr-Regular.woff2) format(woff2);
+  font-style: normal;
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: azarmehr;
+  src: url(../public/font/AzarMehr-Medium.woff2) format(woff2);
+  font-style: normal;
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: azarmehr;
+  src: url(../public/font/AzarMehr-SemiBold.woff2) format(woff2);
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: azarmehr;
+  src: url(../public/font/AzarMehr-Bold.woff2) format(woff2);
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: azarmehr;
+  src: url(../public/font/AzarMehr-Black.woff2) format(woff2);
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* 
+
+!=-=-=-=-=-=-=-=-=-=-
+
+?    Global Class
+
+!=-=-=-=-=-=-=-=-=-=-
+
+*/
+
+.logo-TheMehti {
+  font-size: 3rem;
+  font-family: logo-singer;
+  height: 5rem;
+  background: linear-gradient(
+    90deg,
+    #fa6e00 0%,
+    #e60026 25%,
+    #fa6e00 50%,
+    #e60026 100%
+  );
+  text-wrap: nowrap;
+  background-size: 400% 100%;
+  background-position: 0% center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 3s linear infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% center;
+  }
+  25% {
+    background-position: 50% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+  75% {
+    background-position: 50% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin: 5rem 0;
+}
+
+.sectionHeadTitle {
+  color: var(--color-FEFEFE);
+  font-size: 4rem;
+  font-weight: 400;
+}
+
+.sectionHeadCaption {
+  color: var(--color-707070);
+  font-size: 2rem;
+  font-weight: 200;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* 
+
+!=-=-=-=-=-=-=-=-=-=-
+
+?       Root
+
+!=-=-=-=-=-=-=-=-=-=-
+
+*/
+
+:root {
+  --color-FFFFFF: #ffffff;
+  --color-fff1e6: #fff1e6;
+  --color-FD6F00: #fd6f00;
+  --color-be5300: #be5300;
+  --color-592700: #592700;
+  --color-E6E6E6: #e6e6e6;
+  --color-D9D9D9: #d9d9d9;
+  --color-B0B0B0: #b0b0b0;
+  --color-000000: #000000;
+  --color-FEFEFE: #fefefe;
+  --color-FDFDFD: #fdfdfd;
+  --color-592700: #592700;
+  --color-F8F8F8: #f8f8f8;
+  --color-DFDFDF: #dfdfdf;
+  --color-C6C6C6: #c6c6c6;
+  --color-BABABA: #bababa;
+  --color-707070: #707070;
+  --color-575757: #575757;
+  --color-E9E9E9: #e9e9e9;
+  --color-DDDDDD: #dddddd;
+  --color-B9B9B9: #b9b9b9;
+  --color-b0b0b0: #b0b0b0;
+  --color-959595: #959595;
+
+  --bgc-primary: #121212;
+}
+
+/* 
+
+!=-=-=-=-=-=-=-=-=-=-
+
+?     Reset Style
+
+!=-=-=-=-=-=-=-=-=-=-
+
+*/
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: azarmehr;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--bgc-primary);
+  overflow-x: hidden;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  scroll-margin-top: 13rem;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+/* 
+
+!=-=-=-=-=-=-=-=-=-=-
+
+?    Components
+
+!=-=-=-=-=-=-=-=-=-=-
+
+*/
+
+.btn {
+  width: 13rem;
+  height: 4rem;
+  background-color: var(--color-FD6F00);
+  border-radius: 1rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: all 100ms ease-out;
+}
+
+.btn-hover:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 1rem var(--color-FD6F00);
+}
+
+/* 
+
+!=-=-=-=-=-=-=-=-=-=-
+
+?     Container
+
+!=-=-=-=-=-=-=-=-=-=-
+
+*/
+
+.container {
+  width: 100%;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+}
+
+@media (min-width: 576px) {
+  .container {
+    /* width: 52rem; */
+    width: 90%;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    /* width: 72rem; */
+    width: 90%;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 96rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 114rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    width: 80%;
+  }
+}
+
+/* 
+
+!=-=-=-=-=-=-=-=-=-=-
+
+?     Responsive
+
+!=-=-=-=-=-=-=-=-=-=-
+
+*/
+
+@media (max-width: 426px) {
+  .sectionHeadTitle {
+    font-size: 3rem;
+  }
+
+  .sectionHeadCaption {
+font-size: 1.7rem;
+  }
+}

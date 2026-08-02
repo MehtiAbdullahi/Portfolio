@@ -1,0 +1,100 @@
+/* 
+
+!=-=-=-=-=-=-=-=-=-=-
+
+?      Styles
+
+!=-=-=-=-=-=-=-=-=-=-
+
+*/
+
+.footer {
+  background-color: #ffffff0b;
+  padding: 2rem 0;
+  margin-top: 12rem;
+}
+
+.footerWrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 6rem;
+}
+
+.footerLogo {
+
+}
+
+.footerList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5rem;
+  margin: 0 2rem;
+}
+
+.footerItem {
+
+}
+
+.footerItemLink {
+  color: var(--color-959595);
+  font-weight: 200;
+  transition: all 0.15s ease-in-out;
+  font-size: 1.8rem;
+}
+
+.footerItemLink:hover {
+  color: var(--color-FD6F00);
+  text-shadow: 0px 0px 0.2rem var(--color-FD6F00);
+}
+
+.footerSocials {
+  display: flex;
+  gap: 2rem;
+}
+
+.footerSocialLink {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  border: 0.1rem solid var(--color-575757);
+  background-color: #ffffff0f;
+  border-radius: 100%;
+  padding: 0.7rem;
+}
+
+.footerSocialSvg {
+
+}
+
+.footerContactUs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footerContactUsEmail,
+.footerContactUsPhone {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footerContactUsEmail span,
+.footerContactUsPhone span {
+  color: var(--color-959595);
+  font-weight: 200;
+}
+
+.footerCopyRight {
+  color: var(--color-959595);
+  font-weight: 300;
+  border-top: 0.1rem solid var(--color-707070);
+  padding-top: 1.5rem;
+  width: 100%;
+  text-align: center;
+}

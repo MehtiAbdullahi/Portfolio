@@ -1,0 +1,177 @@
+/* 
+
+!=-=-=-=-=-=-=-=-=-=-
+
+?      Style
+
+!=-=-=-=-=-=-=-=-=-=-
+
+*/
+
+.contactUsWrapper {
+  margin-top: 5rem;
+}
+
+.contactMeInputs {
+}
+
+.contactMeForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.allInputInForm {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.allInputInForm {
+}
+
+.contactMeInput,
+.contactUsTextarea {
+  padding: 1rem;
+  border: none;
+  outline: none;
+  background-color: #1e1e1e;
+  color: var(--color-959595);
+  border-radius: 5px;
+}
+
+.contactMeInput {
+  height: 6rem;
+}
+
+.desiredServices {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1e1e1e;
+  padding: 1rem;
+  font-size: 18px;
+  color: var(--color-959595);
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.15s all ease;
+}
+
+.desiredServices:hover .desiredServicesTitle {
+  color: var(--color-be5300);
+}
+
+.desiredServicesTitle {
+}
+
+.desiredServiceIcon {
+  transition: 0.15s all ease;
+}
+
+.desiredServices:hover .desiredServiceIcon {
+  stroke: var(--color-be5300);
+}
+
+.desiredServicesSubmenu {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  top: 5.5rem;
+  z-index: 9999;
+  background-color: #242424;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  transition: all 0.15s ease-in;
+
+  opacity: 0;
+  visibility: hidden;
+}
+
+.desiredServicesSubmenu.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.desiredServicesList {
+  display: block;
+  padding: 1rem;
+  text-align: end;
+}
+
+.desiredServicesItem {
+  padding: 14px 2rem;
+  border-radius: 5px;
+  transition: 0.1s all ease-out;
+  cursor: pointer;
+}
+
+.desiredServicesItem:hover {
+  background-color: #1a1a1a;
+  color: #ff9d00;
+  text-shadow: 0px 0px 2px #ff9d00;
+}
+
+.contactUsTextarea {
+  min-height: 10rem;
+  max-height: 40rem;
+  resize: vertical;
+}
+
+.formBtnWrapper {
+  width: 100% !important;
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+}
+
+.contactUsBtn {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* 
+
+!=-=-=-=-=-=-=-=-=-=-
+
+?     Responsive
+
+!=-=-=-=-=-=-=-=-=-=-
+
+*/
+
+@media (max-width: 1400px) {
+}
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 992px) {
+}
+
+@media (max-width: 768px) {
+  .allInputInForm {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+  }
+  .desiredServicesSubmenu {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    top: 4.3rem;
+    z-index: 9999;
+    background-color: #242424;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    transition: all 0.15s ease-in;
+
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 576px) {
+}
