@@ -122,7 +122,7 @@ function Hero() {
               </Link>
             </div>
             <div className={Styles.heroBtns}>
-              <Link className={`btn-hover ${Styles.hireMeBtn}`}>
+              <Link to="/hire-me" className={`btn-hover ${Styles.hireMeBtn}`}>
                 استخدام کردن
               </Link>
               <a className={Styles.myPortfolioBtn} href="#portfolio">

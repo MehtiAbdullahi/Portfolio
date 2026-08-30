@@ -43,6 +43,7 @@ function Navbar() {
               </ul>
             </div>
             <Link
+              to="/hire-me"
               className={`btn-flip ${Styles.btnFlip}`}
               data-back="کلیک کن!"
               data-front="استخدام کردن"
@@ -89,7 +90,10 @@ function Navbar() {
                 </a>
               </li>
             </ul>
-            <Link className={`btn btn-hover ${Styles.menuMobileBtn}`}>
+            <Link
+              to="/hire-me"
+              className={`btn btn-hover ${Styles.menuMobileBtn}`}
+            >
               استخدام کردن
             </Link>
           </div>
