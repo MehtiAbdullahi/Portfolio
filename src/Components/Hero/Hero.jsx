@@ -1,24 +1,10 @@
 import { Link } from "react-router-dom";
 import Styles from "./Hero.module.css";
-import Particles from "./Particles";
 import TypeIt from "typeit-react";
 
 function Hero() {
   return (
     <>
-      <div className={Styles.heroBackground}>
-        <Particles
-          particleColors={["#fff"]}
-          particleCount={1000}
-          particleSpread={10}
-          speed={0.4}
-          particleBaseSize={50}
-          moveParticlesOnHover
-          alphaParticles
-          disableRotation
-          pixelRatio="2"
-        />
-      </div>
       <div className="container">
         <div className={Styles.heroWrapper} id="home">
           <div className={Styles.heroRight}>

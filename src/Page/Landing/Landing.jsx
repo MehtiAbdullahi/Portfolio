@@ -7,10 +7,13 @@ import Services from "../../Components/Services/Services";
 import Aboutme from "../../Components/Aboutme/Aboutme.jsx";
 import Portfolio from "../../Components/Portfolio/Portfolio";
 import ContactUs from "../../Components/ContactUs/ContactUs";
+import Background from "../../Components/Animation/Background/Background.jsx";
 
 function Landing() {
   return (
     <>
+      <Background />
+
       <header className={Styles.header}>
         <Navbar />
       </header>

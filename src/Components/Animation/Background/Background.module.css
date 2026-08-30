@@ -1,0 +1,228 @@
+/* =========================================================
+   Portfolio background — schematic grid with traveling
+   signal pulses. Two layers only:
+   1) a static grid painted with CSS gradients (0 DOM nodes)
+   2) a handful of animated "pulse" elements, JS-selected
+   No infinite CSS loops, no all-at-once sync bugs.
+   ========================================================= */
+
+.background {
+  --cell: 84px; /* grid cell size → square cells */
+  --line-color: rgba(255, 255, 255, 0.055);
+  --line-color-strong: rgba(255, 255, 255, 0.09);
+  --pulse-color: 253, 111, 0; /* signal-blue, as r,g,b */
+  --bg-base: #151515;
+  --bg-deep: #0e0e0e;
+
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 100% at 15% 0%,
+    var(--bg-base) 0%,
+    var(--bg-deep) 70%
+  );
+}
+
+/* Ambient corner glow — a slow, quiet "breathing" light that
+   gives the grid depth without competing with the pulses. */
+.ambient {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 60vw;
+  height: 60vw;
+  max-width: 900px;
+  max-height: 900px;
+  background: radial-gradient(
+    circle,
+    rgba(var(--pulse-color), 0.1) 0%,
+    rgba(var(--pulse-color), 0) 70%
+  );
+  filter: blur(10px);
+  animation: breathe 12s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+/* Static grid, painted once, no DOM cost. Cell size is kept
+   in sync with JS (which uses the same --cell value) so the
+   animated pulses land exactly on these lines. */
+.grid {
+  position: absolute;
+  inset: -1px 0 0 -1px; /* nudge so the first line is fully visible */
+  background-image:
+    linear-gradient(to right, var(--line-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line-color) 1px, transparent 1px);
+  background-size: var(--cell) var(--cell);
+  /* fade the grid toward the edges so it reads as atmosphere,
+     not a spreadsheet */
+  -webkit-mask-image: radial-gradient(
+    120% 90% at 50% 30%,
+    #000 0%,
+    transparent 78%
+  );
+  mask-image: radial-gradient(120% 90% at 50% 30%, #000 0%, transparent 78%);
+}
+
+.pulses {
+  position: absolute;
+  inset: 0;
+}
+
+/* A single traveling pulse. Rendered once per burst by React,
+   plays exactly one pass, then unmounts — nothing loops. */
+.pulseTrack {
+  position: absolute;
+  mix-blend-mode: screen;
+}
+
+.pulseTrack[data-axis="v"] {
+  top: 0;
+  width: 1px;
+  height: 100%;
+}
+
+.pulseTrack[data-axis="h"] {
+  left: 0;
+  height: 1px;
+  width: 100%;
+}
+
+.beam {
+  position: absolute;
+  opacity: 0;
+}
+
+.pulseTrack[data-axis="v"] .beam {
+  left: -1px;
+  width: 1px;
+  height: 12%;
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--pulse-color), 0) 0%,
+    rgba(var(--pulse-color), 0.85) 55%,
+    rgba(var(--pulse-color), 1) 85%,
+    rgba(var(--pulse-color), 0) 100%
+  );
+  box-shadow: 0 0 12px 1px rgba(var(--pulse-color), 0.55);
+  animation-name: travelDown;
+}
+
+.pulseTrack[data-axis="h"] .beam {
+  top: -1px;
+  height: 1px;
+  width: 12%;
+  background: linear-gradient(
+    to right,
+    rgba(var(--pulse-color), 0) 0%,
+    rgba(var(--pulse-color), 0.85) 55%,
+    rgba(var(--pulse-color), 1) 85%,
+    rgba(var(--pulse-color), 0) 100%
+  );
+  box-shadow: 0 0 12px 1px rgba(var(--pulse-color), 0.55);
+  animation-name: travelRight;
+}
+
+.beam {
+  animation-duration: var(--dur, 1700ms);
+  animation-delay: var(--delay, 0ms);
+  animation-timing-function: cubic-bezier(0.35, 0.1, 0.25, 1);
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+/* also light up the static grid line the beam travels along,
+   very briefly, so the crossing reads as one coherent event */
+.litLine {
+  position: absolute;
+  background: var(--line-color-strong);
+  opacity: 0;
+  animation: lineFlash var(--dur, 1700ms) var(--delay, 0ms)
+    cubic-bezier(0.35, 0.1, 0.25, 1) forwards;
+}
+
+.litLine[data-axis="v"] {
+  top: 0;
+  width: 1px;
+  height: 100%;
+}
+
+.litLine[data-axis="h"] {
+  left: 0;
+  height: 1px;
+  width: 100%;
+}
+
+@keyframes travelDown {
+  0% {
+    top: -28%;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 104%;
+    opacity: 0;
+  }
+}
+
+@keyframes travelRight {
+  0% {
+    left: -28%;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    left: 104%;
+    opacity: 0;
+  }
+}
+
+@keyframes lineFlash {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient,
+  .beam,
+  .litLine {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+}
