@@ -3,7 +3,7 @@ import Styles from "./Aboutme.module.css";
 import { Link } from "react-router-dom";
 import Skill from "../Skill/Skill";
 import AnimatedSection from "../Animation/AnimatedSection";
-import { fadeLeft, fadeRight } from "../../Animations/Animations";
+import { fadeRight } from "../../Animations/Animations";
 
 function Aboutme() {
   return (

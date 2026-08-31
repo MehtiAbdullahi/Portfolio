@@ -19,6 +19,7 @@ import classNames from "classnames";
 import Background from "../../Components/Animation/Background/Background";
 import { Link } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import HelpWidget from "../../Components/Help/Help";
 
 const SERVICES = [
   { id: "fullsite", title: "طراحی و توسعه وب‌سایت کامل", icon: Code2 },
@@ -166,6 +167,10 @@ export default function HireMePage() {
 
   return (
     <>
+      <HelpWidget FAQ={[{
+        q: "مهم حتما بخونید",
+        a: "این پروژه فعلا نمایشی هستش و قابلیت ثبت سفارش در دسترس نیست!"
+      }]}/>
       <Background />
       <div className={style["back-to-home__btn"]}>
         <Link to="/">بازشگت به صفحه قبلی</Link>
