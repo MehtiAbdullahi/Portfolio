@@ -39,7 +39,7 @@ function Services() {
       title: "اجرای کامل پروژه",
       des: `اگر برای اجرای پروژه به چند متخصص نیاز داشته باشید، می‌توانم هماهنگی بخش‌های مختلف را بر عهده بگیرم.
 بخش Front-End توسط خودم انجام می‌شود و برای بخش‌های دیگر با متخصص مربوطه همکاری می‌کنم.
-در نهایت، هدف ارائه یک پروژه یکپارچه و هماهنگ به شماست.`,
+`,
     },
   ];
 
@@ -57,7 +57,9 @@ function Services() {
           {services.map(({ title, des }) => (
             <AnimatedSection variants={scaleUp}>
               <div className={Styles.service}>
-                <Service className={Styles.serviceIcon} />
+                <div className={Styles.serviceIcon}>
+                  <Service />
+                </div>
                 <span className={Styles.serviceName}>{title}</span>
                 <p className={Styles.serviceDescription}>{des}</p>
               </div>
