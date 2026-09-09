@@ -3,6 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./custom.css";
 import ClickSpark from "./Click";
+import "./Utils/i18n"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
