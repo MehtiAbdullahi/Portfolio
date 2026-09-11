@@ -121,6 +121,23 @@
   background-color: #ffffff0f;
   border-radius: 100%;
   padding: 4px;
+  transition: all 0.15s ease;
+}
+
+.heroSocialLink:hover {
+  border: 1px solid var(--color-FD6F00);
+  box-shadow: 0 0 5px var(--color-FD6F00);
+}
+
+.heroSocialLink svg {
+  width: 25px;
+  height: 25px;
+  color: white;
+  transition: all 0.15s ease;
+}
+
+.heroSocialLink:hover svg {
+  color: var(--color-FD6F00);
 }
 
 .heroSocialSvg {
