@@ -6,8 +6,12 @@ import { useTranslation } from "react-i18next";
 
 function App() {
   const route = useRoutes(routes);
-
   const { i18n } = useTranslation();
+  const sevedLang = localStorage.getItem("lang");
+
+  useEffect(() => {
+    i18n.changeLanguage(sevedLang);
+  }, [sevedLang]);
 
   useEffect(() => {
     const language = i18n.language;
@@ -15,11 +19,7 @@ function App() {
     document.documentElement.dir = language === "en" ? "ltr" : "rtl";
   }, [i18n.language]);
 
-  return (
-    <>
-      {route}
-    </>
-  );
+  return <>{route}</>;
 }
 
 export default App;

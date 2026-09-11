@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Footer from "../../Components/Footer/Footer";
-import Navbar2 from "../../Components/Navbar2/Navbar";
 import Navbar from "../../Components/Navbar/Navbar";
 import Styles from "./Landing.module.css";
 import Hero from "../../Components/Hero/Hero";

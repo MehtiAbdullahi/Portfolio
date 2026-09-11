@@ -201,6 +201,11 @@
 .heroLeft {
   align-items: center;
   justify-content: center;
+  border-right: 6px solid var(--accent-2);
+  border-top: 6px solid var(--accent-2);
+  border-radius: 50%;
+  padding: 2rem;
+  transform: rotate(0);
 }
 
 :root {
@@ -245,10 +250,12 @@
 }
 
 /* rotating conic-gradient ring, masked into a thin donut */
-.frame .ring {
+
+/* .frame .ring {
   position: absolute;
   inset: -4.5%;
   border-radius: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
   background: conic-gradient(
     from 0deg,
@@ -270,15 +277,16 @@
     #000 calc(100% - 5px)
   );
   animation: spin 14s linear infinite;
-}
-@keyframes spin {
+} */
+
+/* @keyframes spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 /* thin static hairline just outside the photo, for crispness */
 .frame .hairline {

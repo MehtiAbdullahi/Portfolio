@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Styles from "./Navbar.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const LANGUAGES = [
@@ -10,13 +10,7 @@ const LANGUAGES = [
 
 function Navbar() {
   const { t, i18n } = useTranslation();
-  const [language, setLanguage] = useState("");
   const [showMenu, setShowMenu] = useState(false);
-
-  // const activeIndex = Math.max(
-  //   0,
-  //   LANGUAGES.findIndex((lang) => lang.code === i18n.language),
-  // );
 
   const handleSelect = (lang) => {
     i18n.changeLanguage(lang.code);
@@ -24,10 +18,6 @@ function Navbar() {
     document.documentElement.lang = lang.dir;
     localStorage.setItem("lang", lang.code);
   };
-
-  useEffect(() => {
-    setLanguage(i18n.language);
-  }, [i18n.language]);
 
   return (
     <>
@@ -146,12 +136,28 @@ function Navbar() {
               </li>
             </ul>
 
-            <Link
-              to="/hire-me"
-              className={`btn btn-hover ${Styles.menuMobileBtn}`}
-            >
-              {t("navbar.hireMe")}
-            </Link>
+            <div className={Styles.navLeftBtnLanMobile}>
+              <div>
+                {LANGUAGES.map((lang) => (
+                  <span
+                    className={
+                      i18n.language === lang.code
+                        ? Styles.navLeftBtnLanActive
+                        : ""
+                    }
+                    onClick={() => handleSelect(lang)}
+                  >
+                    {lang.label}
+                  </span>
+                ))}
+              </div>
+              <Link
+                to="/hire-me"
+                className={`btn btn-hover ${Styles.menuMobileBtn}`}
+              >
+                {t("navbar.hireMe")}
+              </Link>
+            </div>
           </div>
         </div>
       </nav>

@@ -14,7 +14,7 @@ i18n.use(initReactI18next).init({
     },
   },
 
-  lng: "en",
+  lng: "fa",
   fallbackLng: "en",
 
   interpolation: {

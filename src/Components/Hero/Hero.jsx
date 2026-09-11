@@ -153,7 +153,6 @@ function Hero() {
           </div>
           <div className={Styles.heroLeft}>
             <div className={Styles.frame}>
-              <div className={Styles.ring}></div>
               <div className={Styles.hairline}></div>
               <div className={Styles.portrait}>
                 <img src="image/Layer-21.png" />
