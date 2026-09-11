@@ -62,14 +62,22 @@
   font-size: 2.5rem;
 }
 
+[dir="ltr"] .serviceName {
+  font-size: 2.2rem;
+}
+
 .serviceDescription {
   line-height: 3rem;
   color: var(--color-575757);
   font-size: 2rem;
   font-weight: 200;
   text-align: center;
-  /* height: 100%; */
-  /* max-height: 250px; */
+  height: 100%;
+  max-height: 350px;
+}
+
+[dir="ltr"] .serviceDescription {
+  font-size: 1.7rem;
 }
 
 /* 

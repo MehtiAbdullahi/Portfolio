@@ -36,12 +36,67 @@
   align-items: center;
 }
 
+.navLeftBtnLan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 20%;
+}
+
+.navLeftBtnLan div {
+  background-color: #ffffff0d;
+  color: white;
+  font-weight: 200;
+  display: flex;
+  border-radius: 20px;
+  padding: 5px;
+  gap: 5px;
+  border: 1px solid #313131;
+}
+
+.navLeftBtnLan div span {
+  padding: 5px 15px;
+  cursor: pointer;
+  font-size: 12px;
+  border-radius: 20px;
+  transition: all 0.15s ease-in;
+}
+
+.navLeftBtnLan div span:hover {
+  background: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    #ff7d19 0%,
+    #e56300 100.3%
+  );
+}
+
+.navLeftBtnLanActive {
+  background: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    #ff7d19 0%,
+    #e56300 100.3%
+  );
+}
+
+.navLeftLanSelected {
+  background: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    var(--color-FD6F00) 0%,
+    var(--color-be5300) 100.3%
+  );
+}
+
 .navList {
   display: flex;
   justify-content: start;
   align-items: center;
   margin-right: 4rem;
   gap: 5rem;
+}
+
+[dir="ltr"] .navList {
+  margin-left: 4rem;
 }
 
 .navListItem {

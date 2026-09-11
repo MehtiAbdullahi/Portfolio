@@ -1,19 +1,21 @@
 import { Link } from "react-router-dom";
 import Styles from "./Hero.module.css";
 import TypeIt from "typeit-react";
+import { useTranslation } from "react-i18next";
 
 function Hero() {
+  const { t } = useTranslation();
   return (
     <>
       <div className="container">
         <div className={Styles.heroWrapper} id="home">
           <div className={Styles.heroRight}>
-            <h6>سلام! من</h6>
-            <h4>مهدی عبداللهی هستم!</h4>
+            <h6>{t("hero.greeting")}</h6>
+            <h4>{t("hero.name")}</h4>
             <h1 className={Styles.heroExpertise}>
               <TypeIt
                 options={{
-                  strings: ["Front-End Development"],
+                  strings: [t("hero.expertise")],
                   speed: 50,
                   waitUntilVisible: true,
                 }}
@@ -123,25 +125,28 @@ function Hero() {
             </div>
             <div className={Styles.heroBtns}>
               <Link to="/hire-me" className={`btn-hover ${Styles.hireMeBtn}`}>
-                استخدام کردن
+                {t("hero.hireMe")}
               </Link>
+
               <a className={Styles.myPortfolioBtn} href="#portfolio">
-                نمونه کار ها
+                {t("hero.portfolio")}
               </a>
             </div>
             <div className={Styles.allWorksWrapper}>
               <div className={Styles.allWorks}>
                 <div className={Styles.allWorksRxperiences}>
                   <h4>5+</h4>
-                  <span>تجربه</span>
+                  <span>{t("hero.experience")}</span>
                 </div>
+
                 <div className={Styles.allWorksProjectDone}>
                   <h4>20+</h4>
-                  <span>پروژه های انجام شده</span>
+                  <span>{t("hero.projectsCompleted")}</span>
                 </div>
+
                 <div className={Styles.allWorksClients}>
                   <h4>80+</h4>
-                  <span>تعداد مشتریان</span>
+                  <span>{t("hero.clients")}</span>
                 </div>
               </div>
             </div>

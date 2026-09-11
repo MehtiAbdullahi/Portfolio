@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import Styles from "./Footer.module.css";
+import { useTranslation } from "react-i18next";
 
 function Footer() {
+  const { t } = useTranslation();
   return (
     <footer className={Styles.footer}>
       <div className="container">
@@ -12,27 +14,31 @@ function Footer() {
           <ul className={Styles.footerList}>
             <li className={Styles.footerItem}>
               <a href="#home" className={Styles.footerItemLink}>
-                خانه
+                {t("footer.home")}
               </a>
             </li>
+
             <li className={Styles.footerItem}>
               <a href="#services" className={Styles.footerItemLink}>
-                سرویس ها
+                {t("footer.services")}
               </a>
             </li>
+
             <li className={Styles.footerItem}>
               <a href="#aboutme" className={Styles.footerItemLink}>
-                درباره من
+                {t("footer.aboutMe")}
               </a>
             </li>
+
             <li className={Styles.footerItem}>
               <a href="#portfolio" className={Styles.footerItemLink}>
-                نمونه کار ها
+                {t("footer.portfolio")}
               </a>
             </li>
+
             <li className={Styles.footerItem}>
               <a href="#contactme" className={Styles.footerItemLink}>
-                ارتباط با من
+                {t("footer.contactMe")}
               </a>
             </li>
           </ul>
@@ -182,7 +188,7 @@ function Footer() {
             </div>
           </div>
           <div className={Styles.footerCopyRight}>
-            <span>Designed by TheMehti Front-End Developer</span>
+            <span>{t("footer.copyright")}</span>
           </div>
         </div>
       </div>

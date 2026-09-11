@@ -12,9 +12,6 @@
   margin-top: 5rem;
 }
 
-.contactMeInputs {
-}
-
 .contactMeForm {
   display: flex;
   flex-direction: column;
@@ -37,6 +34,7 @@
   background-color: #1e1e1e;
   color: var(--color-959595);
   border-radius: 5px;
+  font-family: azarMehr;
 }
 
 .contactMeInput {
@@ -129,6 +127,7 @@
   outline: none;
   border: none;
   cursor: pointer;
+  font-family: inherit;
 }
 
 /* 

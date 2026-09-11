@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   Code2,
   LayoutTemplate,
@@ -22,36 +23,36 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import HelpWidget from "../../Components/Help/Help";
 
 const SERVICES = [
-  { id: "fullsite", title: "طراحی و توسعه وب‌سایت کامل", icon: Code2 },
-  { id: "frontend", title: "توسعه Front-End", icon: LayoutTemplate },
-  { id: "figma", title: "تبدیل طراحی Figma به کد", icon: FileCode2 },
-  { id: "fixbug", title: "رفع باگ و بهینه‌سازی سایت", icon: Bug },
-  { id: "other", title: "خدمت دیگر", icon: Plus },
+  { id: "fullsite", icon: Code2 },
+  { id: "frontend", icon: LayoutTemplate },
+  { id: "figma", icon: FileCode2 },
+  { id: "fixbug", icon: Bug },
+  { id: "other", icon: Plus },
 ];
 
 const BUDGETS = [
-  "زیر 10 میلیون تومان",
-  "10 تا 20 میلیون تومان",
-  "15 تا 30 میلیون تومان",
-  "بالای 30 میلیون تومان",
-  "هنوز مشخص نیست",
+  "underTen",
+  "tenToTwenty",
+  "fifteenToThirty",
+  "overThirty",
+  "notSure",
 ];
 
 const DEADLINES = [
-  "فوری (زیر 1 هفته)",
-  "1 تا 2 هفته",
-  "3 تا 4 هفته",
-  "بیش از 1 ماه",
-  "زمان‌بندی منعطف",
+  "urgent",
+  "oneToTwoWeeks",
+  "threeToFourWeeks",
+  "overOneMonth",
+  "flexible",
 ];
 
-const CONTACT_METHODS = ["تلفن", "ایمیل", "تلگرام"];
+const CONTACT_METHODS = ["phone", "email", "telegram"];
 
-const STEPS = [
-  { key: 1, label: "خدمت" },
-  { key: 2, label: "جزئیات پروژه" },
-  { key: 3, label: "بودجه و زمان" },
-  { key: 4, label: "اطلاعات تماس" },
+const STEP_KEYS = [
+  { key: 1, labelKey: "steps.service.label" },
+  { key: 2, labelKey: "steps.details.label" },
+  { key: 3, labelKey: "steps.budget.label" },
+  { key: 4, labelKey: "steps.contact.label" },
 ];
 
 function Chip({ active, onClick, children }) {
@@ -86,6 +87,7 @@ function TextInput({ value, onChange, placeholder, type = "text" }) {
 }
 
 export default function HireMePage() {
+  const { t, i18n } = useTranslation();
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -115,16 +117,16 @@ export default function HireMePage() {
 
   const validateStep = () => {
     if (step === 1 && data.services.length === 0) {
-      return "حداقل یک خدمت را انتخاب کنید";
+      return t("validation.selectService");
     }
     if (step === 2 && (!data.title.trim() || !data.description.trim())) {
-      return "عنوان و توضیحات پروژه را وارد کنید";
+      return t("validation.projectDetails");
     }
     if (step === 3 && (!data.budget || !data.deadline)) {
-      return "بودجه و زمان‌بندی را مشخص کنید";
+      return t("validation.budgetDeadline");
     }
     if (step === 4 && (!data.name.trim() || !data.email.trim())) {
-      return "نام و ایمیل الزامی است";
+      return t("validation.nameEmail");
     }
     return "";
   };
@@ -163,36 +165,35 @@ export default function HireMePage() {
     setError("");
   };
 
-  const serviceTitleById = (id) => SERVICES.find((s) => s.id === id)?.title;
-
   return (
     <>
-      <HelpWidget FAQ={[{
-        q: "مهم حتما بخونید",
-        a: "این پروژه فعلا نمایشی هستش و قابلیت ثبت سفارش در دسترس نیست!"
-      }]}/>
+      <HelpWidget
+        FAQ={[
+          {
+            q: t("مهم — لطفاً مطالعه کنید"),
+            a: t("این پروژه در حال حاضر یک نسخه نمایشی (Demo) است و امکان ثبت سفارش هنوز فعال نیست!"),
+          },
+        ]}
+      />
       <Background />
       <div className={style["back-to-home__btn"]}>
-        <Link to="/">بازشگت به صفحه قبلی</Link>
+        <Link to="/">{t("common.backToHome")}</Link>
         <IoMdArrowRoundBack />
       </div>
-      <div dir="rtl" className={style["hire-page"]}>
+      <div dir={i18n.dir()} className={style["hire-page"]}>
         <div className={style["hire-container"]}>
           {/* Header */}
           <div className={style["hire-header"]}>
             <div className={style["hire-badge"]}>The Mehti</div>
-            <h1 className={style["hire-title"]}>استخدام کردن من</h1>
-            <p className={style["hire-subtitle"]}>
-              جزئیات پروژه‌تون رو با من در میون بذارید تا سریع‌تر باهاتون تماس
-              بگیرم
-            </p>
+            <h1 className={style["hire-title"]}>{t("hireMe.title")}</h1>
+            <p className={style["hire-subtitle"]}>{t("hireMe.subtitle")}</p>
           </div>
 
           {!submitted ? (
             <>
               {/* Step indicator */}
               <div className={style["step-indicator"]}>
-                {STEPS.map((s, i) => (
+                {STEP_KEYS.map((s, i) => (
                   <React.Fragment key={s.key}>
                     <div className={style["step-item"]}>
                       <div
@@ -211,11 +212,11 @@ export default function HireMePage() {
                           step >= s.key && style["step-label--active"],
                         )}
                       >
-                        {s.label}
+                        {t(s.labelKey)}
                       </span>
                     </div>
 
-                    {i < STEPS.length - 1 && (
+                    {i < STEP_KEYS.length - 1 && (
                       <div
                         className={classNames(
                           style["step-line"],
@@ -232,11 +233,11 @@ export default function HireMePage() {
                 {step === 1 && (
                   <div>
                     <h2 className={style["step-heading"]}>
-                      چه خدمتی نیاز دارید؟
+                      {t("steps.service.heading")}
                     </h2>
 
                     <p className={style["step-description"]}>
-                      می‌تونید بیشتر از یک مورد رو انتخاب کنید
+                      {t("steps.service.description")}
                     </p>
 
                     <div className={style["service-grid"]}>
@@ -269,7 +270,7 @@ export default function HireMePage() {
                                 active && style["service-title--active"],
                               )}
                             >
-                              {s.title}
+                              {t(`servicesHireMePage.items.${s.id}.title`)}
                             </span>
                           </button>
                         );
@@ -286,38 +287,42 @@ export default function HireMePage() {
                         style["step-heading--tight"],
                       )}
                     >
-                      جزئیات پروژه
+                      {t("steps.details.heading")}
                     </h2>
 
                     <div>
-                      <FieldLabel>عنوان پروژه</FieldLabel>
+                      <FieldLabel>{t("steps.details.titleLabel")}</FieldLabel>
 
                       <TextInput
                         value={data.title}
                         onChange={set("title")}
-                        placeholder="مثلا: طراحی سایت فروشگاهی"
+                        placeholder={t("steps.details.titlePlaceholder")}
                       />
                     </div>
 
                     <div>
-                      <FieldLabel>توضیحات پروژه</FieldLabel>
+                      <FieldLabel>
+                        {t("steps.details.descriptionLabel")}
+                      </FieldLabel>
 
                       <textarea
                         value={data.description}
                         onChange={(e) => set("description")(e.target.value)}
-                        placeholder="هر چیزی که فکر می‌کنید لازمه بدونم..."
+                        placeholder={t("steps.details.descriptionPlaceholder")}
                         rows={5}
                         className={style["text-area"]}
                       />
                     </div>
 
                     <div>
-                      <FieldLabel>لینک مرجع (اختیاری)</FieldLabel>
+                      <FieldLabel>
+                        {t("steps.details.referenceLabel")}
+                      </FieldLabel>
 
                       <TextInput
                         value={data.referenceLink}
                         onChange={set("referenceLink")}
-                        placeholder="لینک سایت مشابه، فایل فیگما و..."
+                        placeholder={t("steps.details.referencePlaceholder")}
                       />
                     </div>
                   </div>
@@ -331,11 +336,11 @@ export default function HireMePage() {
                         style["step-heading--tight"],
                       )}
                     >
-                      بودجه و زمان‌بندی
+                      {t("steps.budget.heading")}
                     </h2>
 
                     <div>
-                      <FieldLabel>بودجه تقریبی</FieldLabel>
+                      <FieldLabel>{t("steps.budget.budgetLabel")}</FieldLabel>
 
                       <div className={style["chip-row"]}>
                         {BUDGETS.map((b) => (
@@ -344,14 +349,14 @@ export default function HireMePage() {
                             active={data.budget === b}
                             onClick={() => set("budget")(b)}
                           >
-                            {b}
+                            {t(`budgets.items.${b}`)}
                           </Chip>
                         ))}
                       </div>
                     </div>
 
                     <div>
-                      <FieldLabel>مهلت زمانی مورد نظر</FieldLabel>
+                      <FieldLabel>{t("steps.budget.deadlineLabel")}</FieldLabel>
 
                       <div className={style["chip-row"]}>
                         {DEADLINES.map((d) => (
@@ -360,7 +365,7 @@ export default function HireMePage() {
                             active={data.deadline === d}
                             onClick={() => set("deadline")(d)}
                           >
-                            {d}
+                            {t(`deadlines.items.${d}`)}
                           </Chip>
                         ))}
                       </div>
@@ -376,43 +381,45 @@ export default function HireMePage() {
                         style["step-heading--tight"],
                       )}
                     >
-                      اطلاعات تماس
+                      {t("steps.contact.heading")}
                     </h2>
 
                     <div className={style["contact-grid"]}>
                       <div>
-                        <FieldLabel>نام و نام‌خانوادگی</FieldLabel>
+                        <FieldLabel>{t("steps.contact.nameLabel")}</FieldLabel>
 
                         <TextInput
                           value={data.name}
                           onChange={set("name")}
-                          placeholder="نام شما"
+                          placeholder={t("steps.contact.namePlaceholder")}
                         />
                       </div>
 
                       <div>
-                        <FieldLabel>ایمیل</FieldLabel>
+                        <FieldLabel>{t("steps.contact.emailLabel")}</FieldLabel>
 
                         <TextInput
                           type="email"
                           value={data.email}
                           onChange={set("email")}
-                          placeholder="example@email.com"
+                          placeholder={t("steps.contact.emailPlaceholder")}
                         />
                       </div>
 
                       <div>
-                        <FieldLabel>شماره تماس (اختیاری)</FieldLabel>
+                        <FieldLabel>{t("steps.contact.phoneLabel")}</FieldLabel>
 
                         <TextInput
                           value={data.phone}
                           onChange={set("phone")}
-                          placeholder="09xxxxxxxxx"
+                          placeholder={t("steps.contact.phonePlaceholder")}
                         />
                       </div>
 
                       <div>
-                        <FieldLabel>روش تماس ترجیحی</FieldLabel>
+                        <FieldLabel>
+                          {t("steps.contact.methodLabel")}
+                        </FieldLabel>
 
                         <div className={style["chip-row"]}>
                           {CONTACT_METHODS.map((m) => (
@@ -421,7 +428,7 @@ export default function HireMePage() {
                               active={data.contactMethod === m}
                               onClick={() => set("contactMethod")(m)}
                             >
-                              {m}
+                              {t(`contact.methods.${m}`)}
                             </Chip>
                           ))}
                         </div>
@@ -429,20 +436,31 @@ export default function HireMePage() {
                     </div>
 
                     <div className={style["summary-box"]}>
-                      <p className={style["summary-title"]}>خلاصه سفارش</p>
-
-                      <p className={style["summary-line"]}>
-                        خدمات:{" "}
-                        {data.services.map(serviceTitleById).join("، ") || "—"}
+                      <p className={style["summary-title"]}>
+                        {t("steps.contact.summary.title")}
                       </p>
 
                       <p className={style["summary-line"]}>
-                        عنوان: {data.title || "—"}
+                        {t("steps.contact.summary.servicesLabel")}{" "}
+                        {data.services
+                          .map((id) =>
+                            t(`servicesHireMePage.items.${id}.title`),
+                          )
+                          .join(", ") || "—"}
                       </p>
 
                       <p className={style["summary-line"]}>
-                        بودجه: {data.budget || "—"} | زمان:{" "}
-                        {data.deadline || "—"}
+                        {t("steps.contact.summary.titleLabel")}{" "}
+                        {data.title || "—"}
+                      </p>
+
+                      <p className={style["summary-line"]}>
+                        {t("steps.contact.summary.budgetLabel")}{" "}
+                        {data.budget ? t(`budgets.items.${data.budget}`) : "—"}{" "}
+                        | {t("steps.contact.summary.timeLabel")}{" "}
+                        {data.deadline
+                          ? t(`deadlines.items.${data.deadline}`)
+                          : "—"}
                       </p>
                     </div>
                   </div>
@@ -454,7 +472,7 @@ export default function HireMePage() {
                 <div className={style["nav-row"]}>
                   {step === 1 ? (
                     <Link className={style["btn-secondary"]} to="/">
-                      بازگشت
+                      {t("common.back")}
                     </Link>
                   ) : (
                     <button
@@ -473,13 +491,18 @@ export default function HireMePage() {
                   >
                     {step < 4 ? (
                       <>
-                        بعدی
+                        {t("common.next")}
                         <ChevronLeft size={16} />
+                      </>
+                    ) : document.documentElement.dir === "rtl" ? (
+                      <>
+                        {t("common.submit")}
+                        <Send size={16} className={style["send-icon__rtl"]}/>
                       </>
                     ) : (
                       <>
-                        ثبت سفارش
-                        <Send size={16} />
+                        {t("common.submit")}
+                        <Send size={16} className={style["send-icon__ltr"]}/>
                       </>
                     )}
                   </button>
@@ -492,13 +515,15 @@ export default function HireMePage() {
                 <Check size={28} />
               </div>
 
-              <h2 className={style["success-title"]}>
-                سفارش شما با موفقیت ثبت شد
-              </h2>
+              <h2 className={style["success-title"]}>{t("success.title")}</h2>
 
               <p className={style["success-text"]}>
-                ممنون از اعتمادتون، {data.name}. به زودی از طریق{" "}
-                {data.contactMethod || "ایمیل"} باهاتون تماس می‌گیرم.
+                {t("success.message", {
+                  name: data.name,
+                  contactMethod: data.contactMethod
+                    ? t(`contact.methods.${data.contactMethod}`)
+                    : t("contact.methods.email"),
+                })}
               </p>
 
               <button
@@ -507,7 +532,7 @@ export default function HireMePage() {
                 className={style["btn-ghost"]}
               >
                 <RotateCcw size={14} />
-                ثبت سفارش جدید
+                {t("success.newRequest")}
               </button>
             </div>
           )}

@@ -141,7 +141,11 @@
   align-items: center;
   flex-direction: column;
   gap: 2.5rem;
-  margin: 5rem 0;
+  margin: 16rem 0 8rem 0;
+}
+
+[dir="ltr"] .sectionHead {
+  gap: 1rem;
 }
 
 .sectionHeadTitle {
@@ -156,6 +160,11 @@
   font-weight: 200;
   margin-bottom: 2rem;
   text-align: center;
+}
+
+::selection {
+  background-color: #fd6e0017;
+  color: #fd6f00;
 }
 
 /* 
@@ -212,12 +221,19 @@ html {
 }
 
 body {
-  font-family: azarmehr;
   font-size: 1.6rem;
   line-height: 1.5;
   color: var(--text-color);
   background-color: var(--bgc-primary);
   overflow-x: hidden;
+}
+
+[dir="rtl"] body {
+  font-family: azarmehr;
+}
+
+[dir="ltr"] body {
+  font-family: lato;
 }
 
 *,
@@ -334,6 +350,6 @@ ul {
   }
 
   .sectionHeadCaption {
-font-size: 1.7rem;
+    font-size: 1.7rem;
   }
 }

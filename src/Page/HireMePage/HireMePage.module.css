@@ -26,6 +26,7 @@
   border-radius: 10px;
   cursor: pointer;
   transition: all ease-in-out 0.2s;
+  direction: rtl;
 }
 
 .back-to-home__btn:hover {
@@ -386,6 +387,10 @@
   transition: opacity 0.2s ease;
 }
 
+[dir="ltr"] .btn-secondary svg {
+  transform: rotate(-180deg);
+}
+
 .btn-secondary:disabled {
   opacity: 0.4;
   cursor: default;
@@ -401,10 +406,22 @@
   border-radius: 999px;
   background: var(--color-FD6F00);
   border: none;
-  color: #141414;
+  color: var(--hm-text);
   cursor: pointer;
   font-family: inherit;
   transition: transform 0.15s ease;
+}
+
+[dir="ltr"] .btn-primary svg {
+  transform: rotate(-180deg);
+}
+
+.send-icon__rtl {
+  transform: rotate(-70deg) !important;
+}
+
+.send-icon__ltr {
+  transform: rotate(360deg) !important;
 }
 
 .btn-primary:active {
@@ -464,7 +481,6 @@
   color: var(--hm-muted);
 }
 
-
 /* Responsive */
 
 @media (max-width: 768px) {
@@ -472,4 +488,3 @@
     display: none;
   }
 }
-
