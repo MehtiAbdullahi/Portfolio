@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "./ProjectCard.css";
+import style from "./ProjectCard.module.css";
+import classNames from "classnames";
 
 export default function ProjectCard({
   name,
@@ -13,23 +14,36 @@ export default function ProjectCard({
 
   return (
     <div
-      className={`project-card ${hovered ? "is-hovered" : ""}`}
+      className={classNames(
+        style["project-card"],
+        hovered ? style["is-hovered"] : "",
+      )}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="project-card__media">
-        <img src={image} alt={name} className="project-card__image" />
-        <div className="project-card__gradient" />
+      <div className={style["project-card__media"]}>
+        <img src={image} alt={name} className={style["project-card__image"]} />
+        <div className={style["project-card__gradient"]} />
 
-        <span className="project-card__corner project-card__corner--tr" />
-        <span className="project-card__corner project-card__corner--tl" />
-        <span className="project-card__corner project-card__corner--br" />
-        <span className="project-card__corner project-card__corner--bl" />
+        <span
+          className={style["project-card__corner project-card__corner--tr"]}
+        />
+        <span
+          className={style["project-card__corner project-card__corner--tl"]}
+        />
+        <span
+          className={style["project-card__corner project-card__corner--br"]}
+        />
+        <span
+          className={style["project-card__corner project-card__corner--bl"]}
+        />
 
-        {category && <span className="project-card__badge">{category}</span>}
+        {category && (
+          <span className={style["project-card__badge"]}>{category}</span>
+        )}
 
-        <div className="project-card__overlay">
-          <a href={href} className="project-card__view-btn">
+        <div className={style["project-card__overlay"]}>
+          <a href={href} className={style["project-card__view-btn"]}>
             مشاهده پروژه
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
               <path
@@ -44,15 +58,15 @@ export default function ProjectCard({
         </div>
       </div>
 
-      <div className="project-card__footer">
+      <div className={style["project-card__footer"]}>
         <div>
-          <p className="project-card__name">{name}</p>
+          <p className={style["project-card__name"]}>{name}</p>
           {tags.length > 0 && (
-            <p className="project-card__tags">{tags.join(" · ")}</p>
+            <p className={style["project-card__tags"]}>{tags.join(" · ")}</p>
           )}
         </div>
         {year && (
-          <span className="project-card__year" dir="ltr">
+          <span className={style["project-card__year"]} dir="ltr">
             {year}
           </span>
         )}

@@ -32,6 +32,7 @@
   border-radius: 0.4rem;
   font-weight: 400;
   transition: 0.15s all ease-out;
+  cursor: pointer;
 }
 
 .portfolioItem:hover {
