@@ -36,6 +36,7 @@ const SignUp = () => {
   const [alerts, setAlerts] = useState({
     emptyInput: false,
     notValid: false,
+    sentConfirmMessage: false,
   });
 
   // ! handleSubmit
@@ -48,7 +49,11 @@ const SignUp = () => {
       password.trim().length
     ) {
       if (testPassword(password)) {
-        console.log("Everything Is Oky!");
+        setAlerts((prev) => ({
+          ...prev,
+          sentConfirmMessage: true,
+        }));
+        setIsSubmitting(true);
       } else {
         setAlerts((prev) => ({
           ...prev,
@@ -97,7 +102,7 @@ const SignUp = () => {
         emptyInput: false,
         notValid: false,
       });
-    }, 3000);
+    }, 5000);
 
     return () => clearTimeout(time);
   }, [alerts]);
@@ -121,6 +126,14 @@ const SignUp = () => {
               title="خطا"
               type="warning"
               message="رمز شما معتبر نیست!"
+            />
+          )) ||
+          (alerts.sentConfirmMessage && (
+            <Alert
+              duration="5000"
+              title="ایمیل خود را تأیید کنید"
+              type="success"
+              message="لینک تأیید حساب به ایمیل شما ارسال شد."
             />
           ))}
       </AnimatePresence>
