@@ -1,0 +1,437 @@
+/*
+  VerifyCode.module.css
+  از رنگ‌ها و فونت‌های گلوبال پروژه (root.css) استفاده می‌کنه:
+  --bgc-primary, --color-FD6F00, --color-FEFEFE, --color-707070, ...
+*/
+
+.page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 1.5rem;
+  background-color: var(--bgc-primary);
+  background-image: radial-gradient(
+      1px 1px at 16% 24%,
+      rgba(255, 255, 255, 0.35),
+      transparent
+    ),
+    radial-gradient(1px 1px at 78% 16%, rgba(255, 255, 255, 0.25), transparent),
+    radial-gradient(1.5px 1.5px at 34% 74%, rgba(255, 255, 255, 0.2), transparent),
+    radial-gradient(1px 1px at 64% 86%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 88% 56%, rgba(255, 255, 255, 0.2), transparent),
+    radial-gradient(1.5px 1.5px at 10% 48%, rgba(255, 255, 255, 0.18), transparent);
+}
+
+[dir="ltr"] .page {
+  direction: ltr;
+}
+
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(9rem);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glowOne {
+  composes: glow;
+  width: 40rem;
+  height: 40rem;
+  top: -13rem;
+  inset-inline-end: -9rem;
+  background: radial-gradient(circle, rgba(253, 111, 0, 0.26), transparent 70%);
+  animation: drift 16s ease-in-out infinite;
+}
+
+.glowTwo {
+  composes: glow;
+  width: 32rem;
+  height: 32rem;
+  bottom: -11rem;
+  inset-inline-start: -8rem;
+  background: radial-gradient(circle, rgba(230, 0, 38, 0.2), transparent 70%);
+  animation: drift 20s ease-in-out infinite reverse;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-2rem, 2rem) scale(1.07);
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 44rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: riseIn 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(2.4rem);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.brand {
+  font-size: 2.6rem;
+  margin-bottom: 3rem;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.045),
+    rgba(255, 255, 255, 0.015)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 2.2rem;
+  padding: 4rem 3.2rem;
+  backdrop-filter: blur(1.6rem);
+  -webkit-backdrop-filter: blur(1.6rem);
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  inset-inline-start: -30%;
+  width: 20rem;
+  height: 20rem;
+  background: conic-gradient(
+    from 0deg,
+    var(--color-FD6F00),
+    transparent 25%,
+    transparent 75%,
+    #e60026
+  );
+  opacity: 0.15;
+  filter: blur(3rem);
+  animation: spinRing 12s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes spinRing {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.iconWrap {
+  position: relative;
+  z-index: 1;
+  width: 6.4rem;
+  height: 6.4rem;
+  margin: 0 auto 2.2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(253, 111, 0, 0.1);
+  border: 1px solid rgba(253, 111, 0, 0.3);
+  color: var(--color-FD6F00);
+}
+
+.iconWrap svg {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 3.2rem;
+}
+
+.title {
+  color: var(--color-FEFEFE);
+  font-size: 2.8rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.caption {
+  color: var(--color-707070);
+  font-size: 1.5rem;
+  font-weight: 200;
+  line-height: 1.7;
+}
+
+.phoneNumber {
+  color: var(--color-FEFEFE);
+  font-weight: 300;
+  direction: ltr;
+  display: inline-block;
+}
+
+.otpRow {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 1.4rem;
+  margin-bottom: 1.4rem;
+  direction: ltr;
+}
+
+.otpBox {
+  width: 6rem;
+  height: 6.4rem;
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: 300;
+  color: var(--color-FEFEFE);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.2rem;
+  font-family: inherit;
+  transition: border-color 220ms ease, box-shadow 220ms ease,
+    background-color 220ms ease, transform 180ms ease;
+}
+
+.otpBox:focus {
+  outline: none;
+  border-color: var(--color-FD6F00);
+  background: rgba(253, 111, 0, 0.05);
+  box-shadow: 0 0 0 4px rgba(253, 111, 0, 0.12);
+}
+
+.otpBoxFilled {
+  border-color: rgba(253, 111, 0, 0.55);
+  animation: pop 220ms ease;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.85);
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.otpRowComplete .otpBox {
+  border-color: var(--color-FD6F00);
+  box-shadow: 0 0 0 4px rgba(253, 111, 0, 0.14);
+}
+
+.otpRowError .otpBox {
+  border-color: #ff5c5c;
+  animation: shake 380ms ease;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-0.6rem);
+  }
+  40% {
+    transform: translateX(0.6rem);
+  }
+  60% {
+    transform: translateX(-0.4rem);
+  }
+  80% {
+    transform: translateX(0.4rem);
+  }
+}
+
+.errorText {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #ff8a5c;
+  font-size: 1.3rem;
+  font-weight: 200;
+  margin-bottom: 1rem;
+}
+
+.primaryBtn {
+  position: relative;
+  z-index: 1;
+  height: 5.4rem;
+  width: 100%;
+  margin-top: 1.2rem;
+  border: none;
+  border-radius: 1.2rem;
+  cursor: pointer;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 300;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: linear-gradient(90deg, #fa6e00 0%, #e60026 50%, #fa6e00 100%);
+  background-size: 220% 100%;
+  background-position: 0% center;
+  transition: background-position 500ms ease, transform 120ms ease,
+    box-shadow 220ms ease;
+}
+
+.primaryBtn:hover {
+  background-position: 100% center;
+  transform: scale(1.015);
+  box-shadow: 0 0.6rem 2.4rem rgba(253, 111, 0, 0.35);
+}
+
+.primaryBtn:active {
+  transform: scale(0.985);
+}
+
+.primaryBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.spinner {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  animation: spin 700ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.footerRow {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-top: 2.6rem;
+  color: var(--color-707070);
+  font-size: 1.4rem;
+  font-weight: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.footerRow span {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.resendBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-FD6F00);
+  font-weight: 300;
+  font-family: inherit;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.resendBtn:disabled {
+  color: var(--color-575757);
+  cursor: not-allowed;
+}
+
+.timer {
+  direction: ltr;
+  display: inline-block;
+  color: var(--color-B0B0B0);
+  font-weight: 200;
+}
+
+.backLink {
+  color: var(--color-707070);
+  font-weight: 200;
+  font-size: 1.3rem;
+  transition: color 180ms ease;
+}
+
+.backLink:hover {
+  color: var(--color-FD6F00);
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 3.2rem 1.8rem;
+    border-radius: 1.8rem;
+  }
+
+  .title {
+    font-size: 2.4rem;
+  }
+
+  .brand {
+    font-size: 2.1rem;
+  }
+
+  .otpRow {
+    gap: 1rem;
+  }
+
+  .otpBox {
+    width: 5rem;
+    height: 5.6rem;
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .otpBox {
+    width: 4.4rem;
+    height: 5rem;
+    font-size: 2rem;
+  }
+
+  .otpRow {
+    gap: 0.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content,
+  .glowOne,
+  .glowTwo,
+  .card::before,
+  .primaryBtn,
+  .spinner,
+  .otpBoxFilled,
+  .otpRowError .otpBox {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -224,7 +224,7 @@ body {
   font-size: 1.6rem;
   line-height: 1.5;
   color: var(--text-color);
-  background-color: var(--bgc-primary);
+  background-color: transparent;
   overflow-x: hidden;
 }
 

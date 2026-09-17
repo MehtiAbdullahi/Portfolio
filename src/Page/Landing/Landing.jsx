@@ -21,10 +21,10 @@ function Landing() {
           },
         ]}
       />
+
       <Background />
 
       <header className={Styles.header}>
-        {/* <Navbar2 /> */}
         <Navbar />
       </header>
 

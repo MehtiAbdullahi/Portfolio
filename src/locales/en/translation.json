@@ -201,5 +201,33 @@
     "title": "Your request has been submitted successfully",
     "message": "Thank you for trusting me, {{name}}. I'll reach out to you soon via {{contactMethod}}.",
     "newRequest": "Submit a new request"
+  },
+  "login": {
+    "title": "Login to your account",
+    "text": "Welcome back! Enter your phone number and password to continue",
+    "placeHolderPass": "Password",
+    "placeHolderPhone": "Phone number",
+    "btnText": "Login",
+    "text2": "Don't have an account?",
+    "text3": "Sign up"
+  },
+  "signUp": {
+    "title": "Create an account",
+    "text": "Just a few steps left enter your details",
+    "placeHolderUsername": "Username",
+    "placeHolderPhone": "Phone number",
+    "placeHolderPass": "Password",
+    "btnText": "Sign up",
+    "text2": "Already have an account?",
+    "text3": "Login"
+  },
+  "verify": {
+    "title": "Enter the verification code.",
+    "text": "4-digit code for the number",
+    "text2": "It was sent via SMS.",
+    "btn": "Verify code",
+    "resendCode": "Resend code in",
+    "editPhoneNumber": "Edit phone number",
+    "error": "The entered code is incorrect!"
   }
 }
