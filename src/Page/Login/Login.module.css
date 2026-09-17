@@ -13,22 +13,6 @@
   position: relative;
   overflow: hidden;
   padding: 4rem 1.5rem;
-  background-color: var(--bgc-primary);
-  background-image:
-    radial-gradient(1px 1px at 12% 20%, rgba(255, 255, 255, 0.35), transparent),
-    radial-gradient(1px 1px at 82% 15%, rgba(255, 255, 255, 0.25), transparent),
-    radial-gradient(
-      1.5px 1.5px at 32% 70%,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    ),
-    radial-gradient(1px 1px at 68% 85%, rgba(255, 255, 255, 0.3), transparent),
-    radial-gradient(1px 1px at 92% 60%, rgba(255, 255, 255, 0.2), transparent),
-    radial-gradient(
-      1.5px 1.5px at 6% 55%,
-      rgba(255, 255, 255, 0.18),
-      transparent
-    );
 }
 
 [dir="ltr"] .page {
@@ -118,6 +102,7 @@
   -webkit-backdrop-filter: blur(1.6rem);
   box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.45);
   overflow: hidden;
+  background-color: var(--bgc-primary);
 }
 
 .card::before {
@@ -231,6 +216,10 @@
 
 .input:focus ~ .icon {
   color: var(--color-FD6F00);
+}
+
+.input.error {
+  border: 1px solid red;
 }
 
 .label {

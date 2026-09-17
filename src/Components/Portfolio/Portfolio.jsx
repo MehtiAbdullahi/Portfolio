@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import Styles from "./Portfolio.module.css";
 import PortfolioBox from "../PortfolioBox/PortfolioBox";
 import AnimatedSection from "../Animation/AnimatedSection";
-import { fadeUp } from "../../Animations/Animations";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
