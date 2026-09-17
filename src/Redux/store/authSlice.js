@@ -13,6 +13,7 @@ export const getSession = createAsyncThunk("auth/getSession", async () => {
 
 const initialState = {
   session: null,
+  // user: null,
   loading: true,
   error: null,
 };
@@ -24,20 +25,19 @@ const authSlice = createSlice({
 
   reducers: {},
 
-  extraReducers: builder => (
-    builder 
+  extraReducers: (builder) =>
+    builder
       .addCase(getSession.pending, (state) => {
-        state.loading = true
+        state.loading = true;
       })
       .addCase(getSession.fulfilled, (state, action) => {
-        state.loading = false
-        state.session = action.payload
+        state.loading = false;
+        state.session = action.payload;
       })
       .addCase(getSession.rejected, (state, action) => {
-        state.loading = false
-        state.error = action.payload
-      })
-  )
+        state.loading = false;
+        state.error = action.payload;
+      }),
 });
 
 export default authSlice.reducer;
