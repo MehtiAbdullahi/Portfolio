@@ -1,0 +1,236 @@
+/*
+  Loader component — TheMehti
+  سبک: Orbit — هسته‌ی نورانیِ مرکزی که می‌تپد، دو حلقه‌ی گرادیانی
+  (نارنجی → قرمز برند) که با سرعت و جهت متفاوت دور آن می‌چرخند، و
+  چند جرقه‌ی کوچک نورانی که در مدار می‌گردند. برای حالت تمام‌صفحه و
+  درون‌کانتینری (inline) هر دو قابل استفاده است.
+*/
+
+.themehti-loader-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- حالت تمام‌صفحه ---------- */
+.themehti-loader-wrapper--fullpage {
+  position: fixed;
+  inset: 0;
+  z-index: 1000000;
+  animation: themehti-loader-fade-in 0.25s ease-out;
+}
+
+.themehti-loader-wrapper--fullpage.themehti-loader-wrapper--overlay {
+  background: rgba(10, 10, 10, 0.74);
+  backdrop-filter: blur(0.6rem);
+  -webkit-backdrop-filter: blur(0.6rem);
+}
+
+@keyframes themehti-loader-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------- حالت داخل کانتینر (مثلاً باکس‌های در حال لود از بک‌اند) ---------- */
+/* توجه: والدِ این المان باید position:relative داشته باشد */
+.themehti-loader-wrapper--inline {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  border-radius: inherit;
+}
+
+.themehti-loader-wrapper--inline.themehti-loader-wrapper--overlay {
+  background: rgba(18, 18, 18, 0.6);
+  backdrop-filter: blur(0.3rem);
+  -webkit-backdrop-filter: blur(0.3rem);
+}
+
+/* ---------- خودِ لودر ---------- */
+.themehti-loader {
+  position: relative;
+  width: var(--loader-size, 9rem);
+  height: var(--loader-size, 9rem);
+  display: block;
+}
+
+/* هاله‌ی نورانیِ نبض‌دار پشت لودر */
+.themehti-loader__aura {
+  position: absolute;
+  inset: -22%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(253, 111, 0, 0.4) 0%,
+    rgba(230, 0, 38, 0.18) 45%,
+    transparent 72%
+  );
+  filter: blur(1.6rem);
+  animation: themehti-loader-aura-pulse 2.2s ease-in-out infinite;
+}
+
+/* حلقه‌های مداری — با conic-gradient و mask به شکل کمان درخشان دربیاد */
+.themehti-loader__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    #fa6e00 70deg,
+    #ffb066 140deg,
+    #e60026 210deg,
+    transparent 320deg,
+    transparent 360deg
+  );
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 0.55rem),
+    #000 calc(100% - 0.5rem)
+  );
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 0.55rem),
+    #000 calc(100% - 0.5rem)
+  );
+  filter: drop-shadow(0 0 0.6rem rgba(253, 111, 0, 0.55));
+}
+
+.themehti-loader__ring--outer {
+  animation: themehti-loader-spin 1.5s linear infinite;
+}
+
+.themehti-loader__ring--middle {
+  inset: 17%;
+  opacity: 0.85;
+  animation: themehti-loader-spin-reverse 2.3s linear infinite;
+}
+
+/* هسته‌ی نورانی مرکزی، با ضربان */
+.themehti-loader__core {
+  position: absolute;
+  inset: 37%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 30%,
+    #ffd8a8 0%,
+    #fd6f00 42%,
+    #e60026 100%
+  );
+  box-shadow: 0 0 1.6rem rgba(253, 111, 0, 0.85),
+    0 0 3.4rem rgba(230, 0, 38, 0.5);
+  animation: themehti-loader-core-pulse 1.5s ease-in-out infinite;
+}
+
+/* جرقه‌های کوچک مداری */
+.themehti-loader__sparks {
+  position: absolute;
+  inset: 0;
+  animation: themehti-loader-spin 2.8s linear infinite;
+}
+
+.themehti-loader__spark {
+  position: absolute;
+  top: 50%;
+  inset-inline-start: 50%;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin: -0.275rem;
+  border-radius: 50%;
+  background: #ffd8a8;
+  box-shadow: 0 0 0.9rem rgba(253, 111, 0, 0.95);
+}
+
+.themehti-loader__spark:nth-child(1) {
+  transform: rotate(0deg) translateX(calc(var(--loader-size, 9rem) / 2 - 0.3rem));
+}
+
+.themehti-loader__spark:nth-child(2) {
+  transform: rotate(120deg)
+    translateX(calc(var(--loader-size, 9rem) / 2 - 0.3rem));
+}
+
+.themehti-loader__spark:nth-child(3) {
+  transform: rotate(240deg)
+    translateX(calc(var(--loader-size, 9rem) / 2 - 0.3rem));
+}
+
+.themehti-loader__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- انیمیشن‌ها ---------- */
+@keyframes themehti-loader-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes themehti-loader-spin-reverse {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes themehti-loader-core-pulse {
+  0%,
+  100% {
+    transform: scale(0.86);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes themehti-loader-aura-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+/* برای کاربرانی که انیمیشن کمتر ترجیح می‌دن */
+@media (prefers-reduced-motion: reduce) {
+  .themehti-loader-wrapper--fullpage {
+    animation: none;
+  }
+  .themehti-loader__aura,
+  .themehti-loader__ring--outer,
+  .themehti-loader__ring--middle,
+  .themehti-loader__core,
+  .themehti-loader__sparks {
+    animation-duration: 6s;
+  }
+}
+
+/* ---------- ریسپانسیو ---------- */
+@media (max-width: 480px) {
+  .themehti-loader-wrapper--fullpage .themehti-loader {
+    --loader-size: 7rem;
+  }
+}
