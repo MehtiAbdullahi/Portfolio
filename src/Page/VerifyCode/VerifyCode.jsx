@@ -7,7 +7,7 @@ import styles from "./VerifyCode.module.css";
 import { GoShieldCheck } from "react-icons/go";
 import { useTranslation } from "react-i18next";
 
-const CODE_LENGTH = 4;
+const CODE_LENGTH = 6;
 const RESEND_SECONDS = 60;
 
 const maskPhone = (phone) => {

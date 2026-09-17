@@ -4,10 +4,23 @@ import PortfolioBox from "../PortfolioBox/PortfolioBox";
 import AnimatedSection from "../Animation/AnimatedSection";
 import { fadeUp } from "../../Animations/Animations";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getSession } from "../../Redux/store/authSlice";
 
 function Portfolio() {
+  const dispatch = useDispatch();
+  const { session, error, loading } = useSelector((state) => state.auth);
+
   const { t } = useTranslation();
+
+  const fetchSession = () => {
+    dispatch(getSession());
+  };
+
+  useEffect(() => {
+    fetchSession();
+  }, []);
 
   const [itemSelected, setItemSelected] = useState("all");
 
@@ -22,7 +35,7 @@ function Portfolio() {
           <ul className={Styles.portfolioList}>
             <li
               className={`${Styles.portfolioItem} ${itemSelected === "all" ? Styles.selected : ""}`}
-              onClick={() => setItemSelected('all')}
+              onClick={() => setItemSelected("all")}
             >
               <Link className={Styles.portfolioLink}>
                 {t("portfolio.tabs.all")}
@@ -31,7 +44,7 @@ function Portfolio() {
 
             <li
               className={`${Styles.portfolioItem} ${itemSelected === "movieWebsite" ? Styles.selected : ""}`}
-              onClick={() => setItemSelected('movieWebsite')}
+              onClick={() => setItemSelected("movieWebsite")}
             >
               <Link className={Styles.portfolioLink}>
                 {t("portfolio.tabs.movieWebsite")}
@@ -40,7 +53,7 @@ function Portfolio() {
 
             <li
               className={`${Styles.portfolioItem} ${itemSelected === "dashboard" ? Styles.selected : ""}`}
-              onClick={() => setItemSelected('dashboard')}
+              onClick={() => setItemSelected("dashboard")}
             >
               <Link className={Styles.portfolioLink}>
                 {t("portfolio.tabs.dashboard")}
@@ -49,7 +62,7 @@ function Portfolio() {
 
             <li
               className={`${Styles.portfolioItem} ${itemSelected === "ecommerce" ? Styles.selected : ""}`}
-              onClick={() => setItemSelected('ecommerce')}
+              onClick={() => setItemSelected("ecommerce")}
             >
               <Link className={Styles.portfolioLink}>
                 {t("portfolio.tabs.ecommerce")}
@@ -61,81 +74,88 @@ function Portfolio() {
         <div className={Styles.portfolios}>
           {/* {portfolioData.map((data) => {})} */}
 
-          <AnimatedSection variants={fadeUp}>
-            <div className={Styles.portfolioBoxs}>
-              <PortfolioBox
-                name={t("portfolio.projects.zalva.name")}
-                category={t("portfolio.projects.zalva.category")}
-                year="۱۴۰۳"
-                tags={[
-                  t("portfolio.projects.zalva.tags.ui"),
-                  t("portfolio.projects.zalva.tags.frontend"),
-                ]}
-                image="/public/image/Gemini_Generated_Image_jjorvmjjorvmjjor.jpg"
-                href="#"
-              />
+          <div className={Styles.portfolioBoxs}>
+            {session && (
+              <div className={Styles.displayLoginSignUp}>
+                <span>
+                  <Link className={`btn btn-hover`} to="/login">
+                    {t("portfolio.loginBtn")}
+                  </Link>
+                </span>
+              </div>
+            )}
+            <PortfolioBox
+              name={t("portfolio.projects.zalva.name")}
+              category={t("portfolio.projects.zalva.category")}
+              year="۱۴۰۳"
+              tags={[
+                t("portfolio.projects.zalva.tags.ui"),
+                t("portfolio.projects.zalva.tags.frontend"),
+              ]}
+              image="/public/image/Gemini_Generated_Image_jjorvmjjorvmjjor.jpg"
+              href="#"
+            />
 
-              <PortfolioBox
-                name={t("portfolio.projects.zalva.name")}
-                category={t("portfolio.projects.zalva.category")}
-                year="۱۴۰۳"
-                tags={[
-                  t("portfolio.projects.zalva.tags.ui"),
-                  t("portfolio.projects.zalva.tags.frontend"),
-                ]}
-                image="/public/image/Rectangle 21.png"
-                href="#"
-              />
+            <PortfolioBox
+              name={t("portfolio.projects.zalva.name")}
+              category={t("portfolio.projects.zalva.category")}
+              year="۱۴۰۳"
+              tags={[
+                t("portfolio.projects.zalva.tags.ui"),
+                t("portfolio.projects.zalva.tags.frontend"),
+              ]}
+              image="/public/image/Rectangle 21.png"
+              href="#"
+            />
 
-              <PortfolioBox
-                name={t("portfolio.projects.zalva.name")}
-                category={t("portfolio.projects.zalva.category")}
-                year="۱۴۰۳"
-                tags={[
-                  t("portfolio.projects.zalva.tags.ui"),
-                  t("portfolio.projects.zalva.tags.frontend"),
-                ]}
-                image="/public/image/Rectangle 21.png"
-                href="#"
-              />
+            <PortfolioBox
+              name={t("portfolio.projects.zalva.name")}
+              category={t("portfolio.projects.zalva.category")}
+              year="۱۴۰۳"
+              tags={[
+                t("portfolio.projects.zalva.tags.ui"),
+                t("portfolio.projects.zalva.tags.frontend"),
+              ]}
+              image="/public/image/Rectangle 21.png"
+              href="#"
+            />
 
-              <PortfolioBox
-                name={t("portfolio.projects.zalva.name")}
-                category={t("portfolio.projects.zalva.category")}
-                year="۱۴۰۳"
-                tags={[
-                  t("portfolio.projects.zalva.tags.ui"),
-                  t("portfolio.projects.zalva.tags.frontend"),
-                ]}
-                image="/public/image/Rectangle 21.png"
-                href="#"
-              />
+            <PortfolioBox
+              name={t("portfolio.projects.zalva.name")}
+              category={t("portfolio.projects.zalva.category")}
+              year="۱۴۰۳"
+              tags={[
+                t("portfolio.projects.zalva.tags.ui"),
+                t("portfolio.projects.zalva.tags.frontend"),
+              ]}
+              image="/public/image/Rectangle 21.png"
+              href="#"
+            />
 
-              <PortfolioBox
-                name={t("portfolio.projects.zalva.name")}
-                category={t("portfolio.projects.zalva.category")}
-                year="۱۴۰۳"
-                tags={[
-                  t("portfolio.projects.zalva.tags.ui"),
-                  t("portfolio.projects.zalva.tags.frontend"),
-                ]}
-                image="/public/image/Rectangle 21.png"
-                href="#"
-              />
+            <PortfolioBox
+              name={t("portfolio.projects.zalva.name")}
+              category={t("portfolio.projects.zalva.category")}
+              year="۱۴۰۳"
+              tags={[
+                t("portfolio.projects.zalva.tags.ui"),
+                t("portfolio.projects.zalva.tags.frontend"),
+              ]}
+              image="/public/image/Rectangle 21.png"
+              href="#"
+            />
 
-              <PortfolioBox
-                name={t("portfolio.projects.zalva.name")}
-                category={t("portfolio.projects.zalva.category")}
-                year="۱۴۰۳"
-                tags={[
-                  t("portfolio.projects.zalva.tags.ui"),
-                  t("portfolio.projects.zalva.tags.frontend"),
-                ]}
-                image="/public/image/Rectangle 21.png"
-                href="#"
-              />
-            </div>
-          </AnimatedSection>
+            <PortfolioBox
+              name={t("portfolio.projects.zalva.name")}
+              category={t("portfolio.projects.zalva.category")}
+              year="۱۴۰۳"
+              tags={[
+                t("portfolio.projects.zalva.tags.ui"),
+                t("portfolio.projects.zalva.tags.frontend"),
+              ]}
+              image="/public/image/Rectangle 21.png"
+              href="#"
+            />
+          </div>
 
           {/* <Link className={`btn btn-hover ${Styles.morePortfolioBtn}`}>
             {t("portfolio.more")}

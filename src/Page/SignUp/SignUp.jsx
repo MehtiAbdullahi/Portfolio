@@ -5,11 +5,13 @@ import styles from "./SignUp.module.css";
 // ? icons
 
 import { LuUserRound } from "react-icons/lu";
-import { LuPhone } from "react-icons/lu";
+import { LuMail } from "react-icons/lu";
 import { GoLock } from "react-icons/go";
 import { LuEye } from "react-icons/lu";
 import { LuEyeOff } from "react-icons/lu";
 import { useTranslation } from "react-i18next";
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const SignUp = () => {
   const { t } = useTranslation();
@@ -17,7 +19,7 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
-  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -29,7 +31,7 @@ const SignUp = () => {
 
     if (
       username.trim().length < 3 ||
-      phone.length < 10 ||
+      !EMAIL_REGEX.test(email.trim()) ||
       password.length < 6
     ) {
       setError("لطفا همه فیلدها رو به‌درستی پر کن");
@@ -42,7 +44,7 @@ const SignUp = () => {
 
     setTimeout(() => {
       setIsSubmitting(false);
-      navigate("/verify-code", { state: { phone, mode: "signup" } });
+      navigate("/verify-code", { state: { email, mode: "signup" } });
     }, 900);
   };
 
@@ -80,20 +82,19 @@ const SignUp = () => {
 
             <div className={styles.field}>
               <input
-                type="tel"
+                type="email"
                 dir="ltr"
-                inputMode="numeric"
                 className={styles.input}
                 placeholder=" "
-                value={phone}
-                onChange={(event) => setPhone(event.target.value)}
-                autoComplete="tel"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                autoComplete="email"
               />
               <label className={styles.label}>
-                {t("signUp.placeHolderPhone")}
+                {t("signUp.placeHolderEmail")}
               </label>
               <span className={styles.icon}>
-                <LuPhone />
+                <LuMail />
               </span>
             </div>
 

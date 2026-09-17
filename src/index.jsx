@@ -3,22 +3,26 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./custom.css";
 import ClickSpark from "./Click";
-import "./Utils/i18n"
+import "./Utils/i18n";
+import store from "./Redux/store";
+import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
-  <BrowserRouter>
-    <ClickSpark
-      sparkColor="#ffaa00"
-      sparkSize={5}
-      sparkRadius={20}
-      sparkCount={8}
-      duration={400}
-    >
-      <App />
-    </ClickSpark>
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <ClickSpark
+        sparkColor="#ffaa00"
+        sparkSize={5}
+        sparkRadius={20}
+        sparkCount={8}
+        duration={400}
+      >
+        <App />
+      </ClickSpark>
+    </BrowserRouter>
+  </Provider>,
   // </React.StrictMode>
 );
 

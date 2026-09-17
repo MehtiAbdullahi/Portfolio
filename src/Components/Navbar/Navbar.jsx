@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import Styles from "./Navbar.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { getSession } from "../../Redux/store/authSlice";
 
 const LANGUAGES = [
   { code: "fa", label: "فا", dir: "rtl" },
@@ -9,7 +11,11 @@ const LANGUAGES = [
 ];
 
 function Navbar() {
+  const dispatch = useDispatch();
+  const { session, error, loading } = useSelector((state) => state.auth);
+
   const { t, i18n } = useTranslation();
+
   const [showMenu, setShowMenu] = useState(false);
 
   const handleSelect = (lang) => {
@@ -18,6 +24,14 @@ function Navbar() {
     document.documentElement.lang = lang.dir;
     localStorage.setItem("lang", lang.code);
   };
+
+  const fetchSession = () => {
+    dispatch(getSession());
+  };
+
+  useEffect(() => {
+    fetchSession();
+  }, []);
 
   return (
     <>
@@ -77,12 +91,21 @@ function Navbar() {
                   </span>
                 ))}
               </div>
-              <Link
-                to="/hire-me"
-                className={`btn-flip ${Styles.btnFlip}`}
-                data-back={t("navbar.hireMeBack")}
-                data-front={t("navbar.hireMe")}
-              ></Link>
+              {session === null ? (
+                <Link
+                  to="/hire-me"
+                  className={`btn-flip ${Styles.btnFlip}`}
+                  data-back={t("navbar.hireMeBack")}
+                  data-front={t("navbar.hireMe")}
+                ></Link>
+              ) : (
+                <Link
+                  to="/login"
+                  className={`btn-flip ${Styles.btnFlip}`}
+                  data-back={t("navbar.hireMeBack")}
+                  data-front={t("navbar.loginSignUp")}
+                ></Link>
+              )}
             </div>
 
             <div

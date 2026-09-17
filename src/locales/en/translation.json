@@ -9,6 +9,7 @@
     "timeline": "Timeline",
     "projectDetails": "Project Details...",
     "send": "Send",
+    "loginBtn": "Login / SignUp",
     "services": {
       "default": "Desired Service",
       "webDesign": "Web Design",
@@ -23,7 +24,8 @@
     "caption": "Web Designer & Front-End Developer",
     "description": "I am a front-end designer and developer focused on creating attractive, fast, and user-friendly interfaces. My main passion is turning ideas and designs into interactive and dynamic web experiences. When designing websites, I pay close attention not only to visual aesthetics but also to user experience (UX), performance, and accessibility. I have strong knowledge of HTML, CSS, JavaScript, and frameworks such as React, and I always strive to write clean, scalable, and standards-compliant code. Responsive design and cross-browser compatibility are among my top priorities. Continuous learning of new web technologies and keeping up with design trends are some of my key strengths. I enjoy teamwork, solving technical challenges, and turning clients' requirements into practical and professional products. My goal is to build websites that are both beautiful and effective.",
     "hireMe": "Hire Me",
-    "imageAlt": "About Me"
+    "imageAlt": "About Me",
+    "loginBtn": "Login / SignUp"
   },
 
   "footer": {
@@ -44,7 +46,8 @@
     "experience": "Experience",
     "projectsCompleted": "Projects Completed",
     "clients": "Clients",
-    "imageAlt": "Mahdi Abdollahi"
+    "imageAlt": "Mahdi Abdollahi",
+    "loginBtn": "Login / SignUp"
   },
 
   "navbar": {
@@ -54,10 +57,12 @@
     "portfolio": "Portfolio",
     "contactMe": "Contact Me",
     "hireMe": "Hire Me",
-    "hireMeBack": "Click Me!"
+    "hireMeBack": "Click Me!",
+    "loginSignUp": "Login / SignUp"
   },
   "portfolio": {
     "title": "Portfolio",
+    "loginBtn": "Login / SignUp",
     "tabs": {
       "all": "All",
       "movieWebsite": "Movie Website",
@@ -206,7 +211,7 @@
     "title": "Login to your account",
     "text": "Welcome back! Enter your phone number and password to continue",
     "placeHolderPass": "Password",
-    "placeHolderPhone": "Phone number",
+    "placeHolderEmail": "Email",
     "btnText": "Login",
     "text2": "Don't have an account?",
     "text3": "Sign up"
@@ -215,7 +220,7 @@
     "title": "Create an account",
     "text": "Just a few steps left enter your details",
     "placeHolderUsername": "Username",
-    "placeHolderPhone": "Phone number",
+    "placeHolderEmail": "Email",
     "placeHolderPass": "Password",
     "btnText": "Sign up",
     "text2": "Already have an account?",

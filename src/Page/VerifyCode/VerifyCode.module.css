@@ -72,7 +72,7 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 44rem;
+  max-width: 50rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -281,7 +281,7 @@
   z-index: 1;
   height: 5.4rem;
   width: 100%;
-  margin-top: 1.2rem;
+  margin-top: 5.2rem;
   border: none;
   border-radius: 1.2rem;
   cursor: pointer;

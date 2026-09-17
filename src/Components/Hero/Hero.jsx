@@ -5,9 +5,24 @@ import { useTranslation } from "react-i18next";
 import { CiLinkedin } from "react-icons/ci";
 import { BsGithub } from "react-icons/bs";
 import { PiTelegramLogoLight } from "react-icons/pi";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getSession } from "../../Redux/store/authSlice";
 
 function Hero() {
+  const dispatch = useDispatch();
+  const { session, error, loading } = useSelector((state) => state.auth);
+
   const { t } = useTranslation();
+
+  const fetchSession = () => {
+    dispatch(getSession());
+  };
+
+  useEffect(() => {
+    fetchSession();
+  }, []);
+
   return (
     <>
       <div className="container">
@@ -50,9 +65,15 @@ function Hero() {
               </a>
             </div>
             <div className={Styles.heroBtns}>
-              <Link to="/hire-me" className={`btn-hover ${Styles.hireMeBtn}`}>
-                {t("hero.hireMe")}
-              </Link>
+              {session === null ? (
+                <Link to="/hire-me" className={`btn-hover ${Styles.hireMeBtn}`}>
+                  {t("hero.hireMe")}
+                </Link>
+              ) : (
+                <Link to="/login" className={`btn-hover ${Styles.hireMeBtn}`}>
+                  {t("hero.loginBtn")}
+                </Link>
+              )}
 
               <a className={Styles.myPortfolioBtn} href="#portfolio">
                 {t("hero.portfolio")}

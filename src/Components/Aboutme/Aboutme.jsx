@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Styles from "./Aboutme.module.css";
 import { Link } from "react-router-dom";
 import Skill from "../Skill/Skill";
 import AnimatedSection from "../Animation/AnimatedSection";
 import { fadeRight } from "../../Animations/Animations";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { getSession } from "../../Redux/store/authSlice";
 
 function Aboutme() {
+  const dispatch = useDispatch();
+  const { session, error, loading } = useSelector((state) => state.auth);
+
   const { t } = useTranslation();
+
+  const fetchSession = () => {
+    dispatch(getSession());
+  };
+
+  useEffect(() => {
+    fetchSession();
+  }, []);
 
   return (
     <>
@@ -23,9 +36,21 @@ function Aboutme() {
                 {t("aboutMe.description")}
               </p>
             </AnimatedSection>
-            <Link className={`btn btn-hover ${Styles.aboutMeBtn}`} to="/hire-me">
-              {t("aboutMe.hireMe")}
-            </Link>
+            {session === null ? (
+              <Link
+                className={`btn btn-hover ${Styles.aboutMeBtn}`}
+                to="/hire-me"
+              >
+                {t("aboutMe.hireMe")}
+              </Link>
+            ) : (
+              <Link
+                className={`btn btn-hover ${Styles.aboutMeBtn}`}
+                to="/hire-me"
+              >
+                {t("aboutMe.loginBtn")}
+              </Link>
+            )}
           </div>
           <div className={Styles.aboutMeLeft}>
             <div className={Styles.aboutMeImgWrapper}>

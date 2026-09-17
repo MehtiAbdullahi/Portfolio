@@ -9,7 +9,7 @@ let routes = [
   { path: "/hire-me", element: <HireMePage /> },
   { path: "/login", element: <Login /> },
   { path: "/signup", element: <SignUp /> },
-  { path: "/verify", element: <VerifyCode /> },
+  // { path: "/verify", element: <VerifyCode /> },
 ];
 
 export default routes;
