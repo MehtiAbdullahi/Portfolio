@@ -1,0 +1,173 @@
+/*
+  Alert component — TheMehti
+  از رنگ‌ها و فونت‌های گلوبال پروژه (index.css) استفاده می‌کند:
+  --color-FD6F00, --color-be5300, --color-592700, --bgc-primary, ...
+  همه‌ی حالت‌های Alert (success / error / warning / info) از همان
+  گرادیانِ برند نارنجی-قرمز استفاده می‌کنند تا هم‌راستا با تم سایت بمانند،
+  تفاوت بین حالت‌ها فقط با آیکون مشخص می‌شود.
+*/
+
+.themehti-alert {
+  position: fixed;
+  top: 2.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999999;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+
+  width: min(44rem, 92vw);
+  padding: 1.6rem 1.8rem;
+
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.03),
+      rgba(255, 255, 255, 0) 40%
+    ),
+    rgba(18, 18, 18, 0.92);
+  backdrop-filter: blur(1.4rem);
+  -webkit-backdrop-filter: blur(1.4rem);
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 1.4rem;
+
+  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(253, 111, 0, 0.12) inset;
+
+  overflow: hidden;
+}
+
+/* نوار گرادیانِ برند در بالای کارت */
+.themehti-alert::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #fa6e00 0%,
+    #e60026 25%,
+    #fa6e00 50%,
+    #e60026 100%
+  );
+  background-size: 400% 100%;
+  animation: themehti-alert-shine 3s linear infinite;
+}
+
+@keyframes themehti-alert-shine {
+  0% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
+}
+
+/* آیکون */
+.themehti-alert__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 3.8rem;
+  height: 3.8rem;
+  border-radius: 1rem;
+
+  color: var(--color-FFFFFF);
+  background: linear-gradient(135deg, #fa6e00, #e60026);
+  box-shadow: 0 0.4rem 1.2rem rgba(253, 111, 0, 0.35);
+}
+
+/* محتوا */
+.themehti-alert__content {
+  flex: 1;
+  min-width: 0;
+  padding-inline-end: 0.4rem;
+}
+
+.themehti-alert__title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-FEFEFE);
+  margin-bottom: 0.3rem;
+  line-height: 1.4;
+}
+
+.themehti-alert__message {
+  font-size: 1.35rem;
+  font-weight: 200;
+  color: var(--color-B0B0B0);
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+/* دکمه بستن */
+.themehti-alert__close {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.6rem;
+  height: 2.6rem;
+  margin-inline-start: 0.2rem;
+
+  border: none;
+  border-radius: 0.8rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--color-B0B0B0);
+  cursor: pointer;
+  transition: all 150ms ease-out;
+}
+
+.themehti-alert__close:hover {
+  background-color: rgba(253, 111, 0, 0.14);
+  color: var(--color-FD6F00);
+  transform: scale(1.06);
+}
+
+/* نوار پیشرفت شمارش معکوس (بستن خودکار) */
+.themehti-alert__progress {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline: 0;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.themehti-alert__progress-bar {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #fa6e00, #e60026);
+  transition: width 100ms linear;
+}
+
+/* ریسپانسیو */
+@media (max-width: 480px) {
+  .themehti-alert {
+    top: 1.4rem;
+    width: 94vw;
+    padding: 1.3rem 1.4rem;
+    gap: 1rem;
+  }
+
+  .themehti-alert__icon {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+
+  .themehti-alert__title {
+    font-size: 1.4rem;
+  }
+
+  .themehti-alert__message {
+    font-size: 1.25rem;
+  }
+}
