@@ -21,6 +21,7 @@
     "@react-three/fiber": "^9.6.1",
     "@redux-devtools/extension": "^3.3.0",
     "@reduxjs/toolkit": "^2.11.2",
+    "@supabase/supabase-js": "^2.116.0",
     "@tailwindcss/vite": "^4.2.1",
     "@types/three": "^0.185.1",
     "bootstrap": "^5.3.8",
