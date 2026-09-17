@@ -21,7 +21,8 @@
   width: min(44rem, 92vw);
   padding: 1.6rem 1.8rem;
 
-  background: linear-gradient(
+  background:
+    linear-gradient(
       180deg,
       rgba(255, 255, 255, 0.03),
       rgba(255, 255, 255, 0) 40%
@@ -33,7 +34,8 @@
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 1.4rem;
 
-  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.55),
+  box-shadow:
+    0 1.2rem 3.2rem rgba(0, 0, 0, 0.55),
     0 0 0 1px rgba(253, 111, 0, 0.12) inset;
 
   overflow: hidden;
@@ -145,8 +147,19 @@
 .themehti-alert__progress-bar {
   display: block;
   height: 100%;
+  width: 100%;
+  transform-origin: left;
   background: linear-gradient(90deg, #fa6e00, #e60026);
-  transition: width 100ms linear;
+  animation: themehti-progress-shrink var(--dur, 4000ms) linear forwards;
+}
+
+@keyframes themehti-progress-shrink {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
 }
 
 /* ریسپانسیو */
