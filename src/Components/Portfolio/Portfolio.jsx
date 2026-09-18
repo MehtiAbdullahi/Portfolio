@@ -9,7 +9,7 @@ import { getSession } from "../../Redux/store/authSlice";
 
 function Portfolio() {
   const dispatch = useDispatch();
-  const { session, error, loading } = useSelector((state) => state.auth);
+  const { session, user, error, loading } = useSelector((state) => state.auth);
 
   const { t } = useTranslation();
 
@@ -74,7 +74,7 @@ function Portfolio() {
           {/* {portfolioData.map((data) => {})} */}
 
           <div className={Styles.portfolioBoxs}>
-            {session && (
+            {!user && (
               <div className={Styles.displayLoginSignUp}>
                 <span>
                   <Link className={`btn btn-hover`} to="/login">

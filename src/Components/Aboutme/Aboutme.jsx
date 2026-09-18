@@ -10,7 +10,7 @@ import { getSession } from "../../Redux/store/authSlice";
 
 function Aboutme() {
   const dispatch = useDispatch();
-  const { session, error, loading } = useSelector((state) => state.auth);
+  const { session, user, error, loading } = useSelector((state) => state.auth);
 
   const { t } = useTranslation();
 
@@ -36,7 +36,7 @@ function Aboutme() {
                 {t("aboutMe.description")}
               </p>
             </AnimatedSection>
-            {session === null ? (
+            {user ? (
               <Link
                 className={`btn btn-hover ${Styles.aboutMeBtn}`}
                 to="/hire-me"

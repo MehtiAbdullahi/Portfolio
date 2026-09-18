@@ -9,7 +9,7 @@ import { getSession } from "../../Redux/store/authSlice";
 
 function ContactUs() {
   const dispatch = useDispatch();
-  const { session, error, loading } = useSelector((state) => state.auth);
+  const { session, user, error, loading } = useSelector((state) => state.auth);
 
   const { t } = useTranslation();
   const [showSubmenu, setShowSubmenu] = useState(false);
@@ -152,7 +152,7 @@ function ContactUs() {
               </div>
 
               <div className={Styles.formBtnWrapper}>
-                {session === null ? (
+                {user ? (
                   <button
                     className={`btn btn-hover ${Styles.contactUsBtn}`}
                     type="submit"

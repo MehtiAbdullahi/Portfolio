@@ -11,7 +11,7 @@ import { getSession } from "../../Redux/store/authSlice";
 
 function Hero() {
   const dispatch = useDispatch();
-  const { session, error, loading } = useSelector((state) => state.auth);
+  const { session, user, error, loading } = useSelector((state) => state.auth);
 
   const { t } = useTranslation();
 
@@ -65,7 +65,7 @@ function Hero() {
               </a>
             </div>
             <div className={Styles.heroBtns}>
-              {session === null ? (
+              {user ? (
                 <Link to="/hire-me" className={`btn-hover ${Styles.hireMeBtn}`}>
                   {t("hero.hireMe")}
                 </Link>

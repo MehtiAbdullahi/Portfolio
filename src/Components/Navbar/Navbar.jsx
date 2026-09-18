@@ -12,7 +12,7 @@ const LANGUAGES = [
 
 function Navbar() {
   const dispatch = useDispatch();
-  const { session, error, loading } = useSelector((state) => state.auth);
+  const { session, user, error, loading } = useSelector((state) => state.auth);
 
   const { t, i18n } = useTranslation();
 
@@ -91,7 +91,7 @@ function Navbar() {
                   </span>
                 ))}
               </div>
-              {session === null ? (
+              {user ? (
                 <Link
                   to="/hire-me"
                   className={`btn-flip ${Styles.btnFlip}`}
