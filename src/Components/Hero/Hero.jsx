@@ -102,7 +102,7 @@ function Hero() {
             <div className={Styles.frame}>
               <div className={Styles.hairline}></div>
               <div className={Styles.portrait}>
-                <img src="image/Layer-21.png" />
+                <img src="image/Layer-21.webp" />
                 <div className={Styles.sheen}></div>
               </div>
             </div>
