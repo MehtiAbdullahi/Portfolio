@@ -36,6 +36,7 @@ const Login = () => {
   const [alerts, setAlerts] = useState({
     emptyInput: false,
     notValid: false,
+    invalidCredentials: false,
   });
 
   // ! handleSubmit
@@ -53,8 +54,16 @@ const Login = () => {
             }),
           ).unwrap();
           setIsSubmitting(false);
+          navigate("/")
         } catch (error) {
-          console.log(error);
+          if (error === "Invalid login credentials") {
+            setAlerts((prev) => ({
+              ...prev,
+              invalidCredentials: true,
+            }));
+          } else {
+            console.log(error);
+          }
           setIsSubmitting(false);
         }
       } else {
@@ -105,7 +114,7 @@ const Login = () => {
         emptyInput: false,
         notValid: false,
       });
-    }, 3000);
+    }, 5000);
 
     return () => clearTimeout(time);
   }, [alerts]);
@@ -127,6 +136,14 @@ const Login = () => {
               title="خطا"
               type="warning"
               message="ایمیل شما معتبر نیست!"
+            />
+          )) ||
+          (alerts.invalidCredentials && (
+            <Alert
+              duration="5000"
+              title="خطا"
+              type="error"
+              message="اطلاعات وارد شده نامعتبر است!"
             />
           ))}
       </AnimatePresence>
