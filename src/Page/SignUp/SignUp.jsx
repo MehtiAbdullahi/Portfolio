@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./SignUp.module.css";
-import { AnimatePresence, time } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import Background from "../../Components/Animation/Background/Background";
 import Loader from "../../Components/Animation/Loader/Loader";
@@ -17,8 +17,13 @@ import { LuMail } from "react-icons/lu";
 import { GoLock } from "react-icons/go";
 import { LuEye } from "react-icons/lu";
 import { LuEyeOff } from "react-icons/lu";
+import { useDispatch, useSelector } from "react-redux";
+import { signUp } from "../../Redux/store/authSlice";
 
 const SignUp = () => {
+  const dispatch = useDispatch();
+  const { loading, error, session } = useSelector((state) => state.auth);
+
   const { t } = useTranslation();
 
   const navigate = useNavigate();
@@ -41,7 +46,7 @@ const SignUp = () => {
 
   // ! handleSubmit
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (
       username.trim().length &&
@@ -54,6 +59,14 @@ const SignUp = () => {
           sentConfirmMessage: true,
         }));
         setIsSubmitting(true);
+        try {
+          await dispatch(signUp({ username, email, password })).unwrap();
+          setIsSubmitting(false);
+          // navigate("/");
+        } catch (error) {
+          console.log(error);
+          setIsSubmitting(false);
+        }
       } else {
         setAlerts((prev) => ({
           ...prev,
@@ -211,7 +224,7 @@ const SignUp = () => {
                     placeholder=" "
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
-                    autoComplete="new-password"
+                    // autoComplete="new-password"
                   />
                   <label className={styles.label}>
                     {t("signUp.placeHolderPass")}

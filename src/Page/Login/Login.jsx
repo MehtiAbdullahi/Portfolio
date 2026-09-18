@@ -14,8 +14,12 @@ import { testEmail } from "../../Validators/regex";
 import classNames from "classnames";
 import { AnimatePresence } from "framer-motion";
 import Alert from "../../Components/AlertBox/Alert";
+import { login } from "../../Redux/store/authSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
+  const dispatch = useDispatch();
+
   const { t } = useTranslation();
 
   const navigate = useNavigate();
@@ -36,11 +40,23 @@ const Login = () => {
 
   // ! handleSubmit
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (email.trim().length && password.trim().length) {
       if (testEmail(email)) {
-        console.log("Everything Is Oky!");
+        setIsSubmitting(true);
+        try {
+          await dispatch(
+            login({
+              email,
+              password,
+            }),
+          ).unwrap();
+          setIsSubmitting(false);
+        } catch (error) {
+          console.log(error);
+          setIsSubmitting(false);
+        }
       } else {
         setAlerts((prev) => ({
           ...prev,
