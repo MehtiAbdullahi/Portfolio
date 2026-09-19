@@ -59,6 +59,8 @@
     "hireMe": "Hire Me",
     "hireMeBack": "Click Me!",
     "loginSignUp": "Login / SignUp"
+    ,
+    "logout": "LogOut"
   },
   "portfolio": {
     "title": "Portfolio",

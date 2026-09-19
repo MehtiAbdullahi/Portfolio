@@ -88,6 +88,32 @@
   );
 }
 
+.navUserGroup {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btnLogout {
+  background: transparent;
+  border: 1px solid #313131;
+  color: var(--color-959595);
+  font-size: 1.3rem;
+  font-weight: 200;
+  padding: 0.8rem 1.6rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+  font-family: azarmehr;
+  font-weight: 300;
+}
+
+.btnLogout:hover {
+  color: var(--color-FD6F00);
+  border-color: var(--color-FD6F00);
+  text-shadow: 0px 0px 0.3rem var(--color-FD6F00);
+}
+
 .navLeftLanSelected {
   background: radial-gradient(
     circle farthest-corner at 10% 20%,

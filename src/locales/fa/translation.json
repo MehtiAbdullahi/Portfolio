@@ -58,7 +58,8 @@
     "contactMe": "ارتباط با من",
     "hireMe": "استخدام من",
     "hireMeBack": "کلیک کن!",
-    "loginSignUp": "ورود / ثبت نام"
+    "loginSignUp": "ورود / ثبت نام",
+    "logout": "خروج"
   },
   "portfolio": {
     "title": "نمونه کارها",

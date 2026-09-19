@@ -57,6 +57,15 @@ export const signUp = createAsyncThunk(
   },
 );
 
+export const logout = createAsyncThunk("auth/logout", async () => {
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    console.error("Logout error:", error);
+    return;
+  }
+});
+
 const initialState = {
   session: null,
   user: null,
@@ -102,6 +111,18 @@ const authSlice = createSlice({
         state.loading = false;
       })
       .addCase(login.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(logout.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.loading = false;
+        state.session = null
+        state.user = null
+      })
+      .addCase(logout.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       }),

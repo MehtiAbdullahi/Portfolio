@@ -3,7 +3,7 @@ import Styles from "./Navbar.module.css";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { getSession } from "../../Redux/store/authSlice";
+import { getSession, logout } from "../../Redux/store/authSlice";
 
 const LANGUAGES = [
   { code: "fa", label: "فا", dir: "rtl" },
@@ -92,12 +92,21 @@ function Navbar() {
                 ))}
               </div>
               {user ? (
-                <Link
-                  to="/hire-me"
-                  className={`btn-flip ${Styles.btnFlip}`}
-                  data-back={t("navbar.hireMeBack")}
-                  data-front={t("navbar.hireMe")}
-                ></Link>
+                <div className={Styles.navUserGroup}>
+                  <button
+                    type="button"
+                    onClick={() => dispatch(logout())}
+                    className={Styles.btnLogout}
+                  >
+                    {t("navbar.logout")}
+                  </button>
+                  <Link
+                    to="/hire-me"
+                    className={`btn-flip ${Styles.btnFlip}`}
+                    data-back={t("navbar.hireMeBack")}
+                    data-front={t("navbar.hireMe")}
+                  ></Link>
+                </div>
               ) : (
                 <Link
                   to="/login"
