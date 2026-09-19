@@ -6,15 +6,45 @@ import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSession } from "../../Redux/store/authSlice";
+import { getProjects } from "../../Redux/store/projects";
+import Loader from "../Animation/Loader/Loader";
+import { supabase } from "../../lib/supabase";
 
 function Portfolio() {
   const dispatch = useDispatch();
-  const { session, user, error, loading } = useSelector((state) => state.auth);
+
+  const {
+    session,
+    user,
+    error: sessionError,
+    loading: sessionLoading,
+  } = useSelector((state) => state.auth);
+
+  const {
+    projects,
+    error: projectError,
+    loading: projectLoading,
+  } = useSelector((state) => state.project);
 
   const { t } = useTranslation();
 
-  const fetchSession = () => {
-    dispatch(getSession());
+const projectsWithImage = projects.map((project) => ({
+  ...project,
+  image: supabase.storage
+    .from("project-images")
+    .getPublicUrl(project.image).data.publicUrl,
+}))
+
+  const fetchProjects = async () => {
+    await dispatch(getProjects());
+  };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  const fetchSession = async () => {
+    await dispatch(getSession());
   };
 
   useEffect(() => {
@@ -83,77 +113,11 @@ function Portfolio() {
                 </span>
               </div>
             )}
-            <PortfolioBox
-              name={t("portfolio.projects.zalva.name")}
-              category={t("portfolio.projects.zalva.category")}
-              year="۱۴۰۳"
-              tags={[
-                t("portfolio.projects.zalva.tags.ui"),
-                t("portfolio.projects.zalva.tags.frontend"),
-              ]}
-              image="/public/image/Gemini_Generated_Image_jjorvmjjorvmjjor.jpg"
-              href="#"
-            />
-
-            <PortfolioBox
-              name={t("portfolio.projects.zalva.name")}
-              category={t("portfolio.projects.zalva.category")}
-              year="۱۴۰۳"
-              tags={[
-                t("portfolio.projects.zalva.tags.ui"),
-                t("portfolio.projects.zalva.tags.frontend"),
-              ]}
-              image="/public/image/Rectangle 21.png"
-              href="#"
-            />
-
-            <PortfolioBox
-              name={t("portfolio.projects.zalva.name")}
-              category={t("portfolio.projects.zalva.category")}
-              year="۱۴۰۳"
-              tags={[
-                t("portfolio.projects.zalva.tags.ui"),
-                t("portfolio.projects.zalva.tags.frontend"),
-              ]}
-              image="/public/image/Rectangle 21.png"
-              href="#"
-            />
-
-            <PortfolioBox
-              name={t("portfolio.projects.zalva.name")}
-              category={t("portfolio.projects.zalva.category")}
-              year="۱۴۰۳"
-              tags={[
-                t("portfolio.projects.zalva.tags.ui"),
-                t("portfolio.projects.zalva.tags.frontend"),
-              ]}
-              image="/public/image/Rectangle 21.png"
-              href="#"
-            />
-
-            <PortfolioBox
-              name={t("portfolio.projects.zalva.name")}
-              category={t("portfolio.projects.zalva.category")}
-              year="۱۴۰۳"
-              tags={[
-                t("portfolio.projects.zalva.tags.ui"),
-                t("portfolio.projects.zalva.tags.frontend"),
-              ]}
-              image="/public/image/Rectangle 21.png"
-              href="#"
-            />
-
-            <PortfolioBox
-              name={t("portfolio.projects.zalva.name")}
-              category={t("portfolio.projects.zalva.category")}
-              year="۱۴۰۳"
-              tags={[
-                t("portfolio.projects.zalva.tags.ui"),
-                t("portfolio.projects.zalva.tags.frontend"),
-              ]}
-              image="/public/image/Rectangle 21.png"
-              href="#"
-            />
+            {projectLoading ? (
+              <Loader variant="inline" />
+            ) : (
+              projectsWithImage?.map((project) => <PortfolioBox {...project} />)
+            )}
           </div>
 
           {/* <Link className={`btn btn-hover ${Styles.morePortfolioBtn}`}>

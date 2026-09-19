@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { supabase } from "../../../../Dashboard Admin/src/lib/supabase";
+import { supabase } from "../../lib/supabase";
 
 export const getSession = createAsyncThunk("auth/getSession", async () => {
   const { data, error } = await supabase.auth.getSession();

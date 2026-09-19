@@ -78,6 +78,7 @@
   justify-content: center;
   margin-top: 4rem;
   gap: 35px;
+  /* position: relative; */
 }
 
 .portfolioBox {
