@@ -23,6 +23,7 @@
   align-items: center;
   flex-direction: column;
   flex-basis: 40%;
+  overflow-x: hidden;
 }
 
 .aboutMeCaption {
