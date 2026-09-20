@@ -33,6 +33,28 @@ function Navbar() {
     fetchSession();
   }, []);
 
+useEffect(() => {
+  const html = document.documentElement;
+  const originalScrollBehavior = html.style.scrollBehavior;
+  
+  if (showMenu) {
+    html.style.scrollBehavior = 'auto'; // موقتاً smooth رو خاموش کن
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
+  } else {
+    const scrollY = document.body.style.top;
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    document.body.style.overflow = '';
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    html.style.scrollBehavior = originalScrollBehavior;
+  }
+}, [showMenu]);
+
   return (
     <>
       <nav className={Styles.nav}>
@@ -183,12 +205,30 @@ function Navbar() {
                   </span>
                 ))}
               </div>
-              <Link
-                to="/hire-me"
-                className={`btn btn-hover ${Styles.menuMobileBtn}`}
-              >
-                {t("navbar.hireMe")}
-              </Link>
+              {user ? (
+                <div className={Styles.navUserGroupMobile}>
+                  <button
+                    type="button"
+                    onClick={() => dispatch(logout())}
+                    className={Styles.btnLogout}
+                  >
+                    {t("navbar.logout")}
+                  </button>
+                  <Link
+                    to="/hire-me"
+                    className={`btn btn-hover ${Styles.menuMobileBtn}`}
+                  >
+                    {t("navbar.hireMe")}
+                  </Link>
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  className={`btn btn-hover ${Styles.menuMobileBtn}`}
+                >
+                  {t("navbar.loginSignUp")}
+                </Link>
+              )}
             </div>
           </div>
         </div>
