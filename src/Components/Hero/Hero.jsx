@@ -8,6 +8,7 @@ import { PiTelegramLogoLight } from "react-icons/pi";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSession } from "../../Redux/store/authSlice";
+import classNames from "classnames";
 
 function Hero() {
   const dispatch = useDispatch();
@@ -78,21 +79,31 @@ function Hero() {
               <a className={Styles.myPortfolioBtn} href="#portfolio">
                 {t("hero.portfolio")}
               </a>
+              <a
+                className={classNames(
+                  Styles.downloadResume,
+                  Styles.myPortfolioBtn,
+                )}
+                href="/assets/resume/mehti_abdollahi_resume.pdf"
+                download="mehti_abdollahi_resume.pdf"
+              >
+                {t("hero.downloadResume")}
+              </a>
             </div>
             <div className={Styles.allWorksWrapper}>
               <div className={Styles.allWorks}>
                 <div className={Styles.allWorksRxperiences}>
-                  <h4>5+</h4>
+                  <h4>+1 year</h4>
                   <span>{t("hero.experience")}</span>
                 </div>
 
                 <div className={Styles.allWorksProjectDone}>
-                  <h4>20+</h4>
+                  <h4>5+</h4>
                   <span>{t("hero.projectsCompleted")}</span>
                 </div>
 
                 <div className={Styles.allWorksClients}>
-                  <h4>80+</h4>
+                  <h4>10+</h4>
                   <span>{t("hero.clients")}</span>
                 </div>
               </div>

@@ -1,19 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
 import Styles from "./Skill.module.css";
-import basilFigmaOutline from "../../../public/icons/svg/basil_figma-outline.svg?react";
-import iconoirAdobeXd from "../../../public/icons/svg/iconoir_adobe-xd.svg?react";
-import iconoirAdobePhotoshop from "../../../public/icons/svg/iconoir_adobe-photoshop.svg?react";
-import iconoirAdobeIllustrator from "../../../public/icons/svg/iconoir_adobe-illustrator.svg?react";
-import basilAdobePremiere from "../../../public/icons/svg/basil_adobe-premiere-outline.svg?react";
 import AnimatedSection from "../Animation/AnimatedSection";
 import { fadeUp } from "../../Animations/Animations";
+import { ImHtmlFive2 } from "react-icons/im";
+import { ImCss3 } from "react-icons/im";
+import { RiTailwindCssFill } from "react-icons/ri";
+import { TbBrandJavascript } from "react-icons/tb";
+import { GrReactjs } from "react-icons/gr";
+import { TbBrandNextjs } from "react-icons/tb";
 
 const skills = [
-  { name: "Figma", percent: 20, icon: basilFigmaOutline },
-  { name: "Adobe XD", percent: 30, icon: iconoirAdobeXd },
-  { name: "Adobe Photoshop", percent: 50, icon: iconoirAdobePhotoshop },
-  { name: "Adobe Illustrator", percent: 70, icon: iconoirAdobeIllustrator },
-  { name: "Adobe Premiere", percent: 100, icon: basilAdobePremiere },
+  { name: "NextJs", percent: 30, icon: TbBrandNextjs },
+  { name: "ReactJs", percent: 75, icon: GrReactjs },
+  { name: "JavaScript", percent: 75, icon: TbBrandJavascript },
+  { name: "TailwindCss", percent: 90, icon: RiTailwindCssFill },
+  { name: "Css", percent: 95, icon: ImCss3 },
+  { name: "Html", percent: 95, icon: ImHtmlFive2 },
 ];
 
 function SkillItem({ skill, index }) {

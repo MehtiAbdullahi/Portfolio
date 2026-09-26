@@ -38,6 +38,7 @@
 
 [dir="ltr"] .aboutMeCaption {
   line-height: 1.5;
+  letter-spacing: 0.1rem;
 }
 
 .aboutMeBtn {

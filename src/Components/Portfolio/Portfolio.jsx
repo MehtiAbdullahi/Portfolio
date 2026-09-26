@@ -10,15 +10,15 @@ import { getProjects } from "../../Redux/store/projects";
 import Loader from "../Animation/Loader/Loader";
 import { supabase } from "../../lib/supabase";
 
-function Portfolio() {
-  const dispatch = useDispatch();
+const allTabs = [
+  { id: 1, title: "portfolio.tabs.all", key: "all" },
+  { id: 2, title: "portfolio.tabs.panel", key: "panel" },
+];
 
-  const {
-    session,
-    user,
-    error: sessionError,
-    loading: sessionLoading,
-  } = useSelector((state) => state.auth);
+function Portfolio() {
+  const [itemSelected, setItemSelected] = useState("all");
+
+  const dispatch = useDispatch();
 
   const {
     projects,
@@ -28,12 +28,19 @@ function Portfolio() {
 
   const { t } = useTranslation();
 
-const projectsWithImage = projects.map((project) => ({
-  ...project,
-  image: supabase.storage
-    .from("project-images")
-    .getPublicUrl(project.image).data.publicUrl,
-}))
+  const projectsWithImage = projects.map((project) => ({
+    ...project,
+    image: supabase.storage.from("project-images").getPublicUrl(project.image)
+      .data.publicUrl,
+  }));
+
+  const filteredProjects = projectsWithImage.filter((project) => {
+    if (itemSelected === "all") {
+      return true;
+    } else {
+      return project.category === itemSelected;
+    }
+  });
 
   const fetchProjects = async () => {
     await dispatch(getProjects());
@@ -51,8 +58,6 @@ const projectsWithImage = projects.map((project) => ({
     fetchSession();
   }, []);
 
-  const [itemSelected, setItemSelected] = useState("all");
-
   return (
     <div className="container">
       <div className="sectionHead">
@@ -60,43 +65,17 @@ const projectsWithImage = projects.map((project) => ({
       </div>
 
       <div className={Styles.portfolioWrapper} id="portfolio">
-        <div className={Styles.portfolioTabs}>
+        <div className={(Styles.allTortfolioTabs)}>
           <ul className={Styles.portfolioList}>
-            <li
-              className={`${Styles.portfolioItem} ${itemSelected === "all" ? Styles.selected : ""}`}
-              onClick={() => setItemSelected("all")}
-            >
-              <Link className={Styles.portfolioLink}>
-                {t("portfolio.tabs.all")}
-              </Link>
-            </li>
-
-            <li
-              className={`${Styles.portfolioItem} ${itemSelected === "movieWebsite" ? Styles.selected : ""}`}
-              onClick={() => setItemSelected("movieWebsite")}
-            >
-              <Link className={Styles.portfolioLink}>
-                {t("portfolio.tabs.movieWebsite")}
-              </Link>
-            </li>
-
-            <li
-              className={`${Styles.portfolioItem} ${itemSelected === "dashboard" ? Styles.selected : ""}`}
-              onClick={() => setItemSelected("dashboard")}
-            >
-              <Link className={Styles.portfolioLink}>
-                {t("portfolio.tabs.dashboard")}
-              </Link>
-            </li>
-
-            <li
-              className={`${Styles.portfolioItem} ${itemSelected === "ecommerce" ? Styles.selected : ""}`}
-              onClick={() => setItemSelected("ecommerce")}
-            >
-              <Link className={Styles.portfolioLink}>
-                {t("portfolio.tabs.ecommerce")}
-              </Link>
-            </li>
+            {allTabs.map(({ id, key, title }) => (
+              <li
+                key={id}
+                className={`${Styles.portfolioItem} ${itemSelected === key ? Styles.selected : ""}`}
+                onClick={() => setItemSelected(key)}
+              >
+                <Link className={Styles.portfolioLink}>{t(title)}</Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -104,19 +83,10 @@ const projectsWithImage = projects.map((project) => ({
           {/* {portfolioData.map((data) => {})} */}
 
           <div className={Styles.portfolioBoxs}>
-            {!user && (
-              <div className={Styles.displayLoginSignUp}>
-                <span>
-                  <Link className={`btn btn-hover`} to="/login">
-                    {t("portfolio.loginBtn")}
-                  </Link>
-                </span>
-              </div>
-            )}
             {projectLoading ? (
               <Loader variant="inline" />
             ) : (
-              projectsWithImage?.map((project) => <PortfolioBox {...project} />)
+              filteredProjects?.map((project) => <PortfolioBox {...project} />)
             )}
           </div>
 

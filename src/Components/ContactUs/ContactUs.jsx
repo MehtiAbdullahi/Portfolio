@@ -13,9 +13,7 @@ function ContactUs() {
 
   const { t } = useTranslation();
   const [showSubmenu, setShowSubmenu] = useState(false);
-  const [selectedService, setSelectedService] = useState(
-    t("contactUs.defaultTitle"),
-  );
+  const [selectedService, setSelectedService] = useState("");
 
   const fetchSession = () => {
     dispatch(getSession());
@@ -24,6 +22,10 @@ function ContactUs() {
   useEffect(() => {
     fetchSession();
   }, []);
+
+  useEffect(() => {
+    setSelectedService("");
+  }, [document.dir]);
 
   return (
     <>
@@ -62,7 +64,9 @@ function ContactUs() {
                   onClick={() => setShowSubmenu((prev) => !prev)}
                 >
                   <span className={Styles.desiredServicesTitle}>
-                    {selectedService}
+                    {selectedService
+                      ? selectedService
+                      : t("contactUs.defaultTitle")}
                   </span>
 
                   <svg

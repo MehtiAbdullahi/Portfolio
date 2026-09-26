@@ -22,7 +22,7 @@
   "aboutMe": {
     "title": "About Me",
     "caption": "Web Designer & Front-End Developer",
-    "description": "I am a front-end designer and developer focused on creating attractive, fast, and user-friendly interfaces. My main passion is turning ideas and designs into interactive and dynamic web experiences. When designing websites, I pay close attention not only to visual aesthetics but also to user experience (UX), performance, and accessibility. I have strong knowledge of HTML, CSS, JavaScript, and frameworks such as React, and I always strive to write clean, scalable, and standards-compliant code. Responsive design and cross-browser compatibility are among my top priorities. Continuous learning of new web technologies and keeping up with design trends are some of my key strengths. I enjoy teamwork, solving technical challenges, and turning clients' requirements into practical and professional products. My goal is to build websites that are both beautiful and effective.",
+    "description": "I'm Mehdi, a front-end developer who found his way here by actually building things.\n\nI never followed the conventional path. At some point I realized traditional schooling wasn't going to get me where I wanted to go, so I chose to learn on my own instead — going through courses, reading documentation, and figuring out what actually works by building it myself, one project at a time.\n\nFront-end wasn't some random pick, either. I wanted a skill with real opportunities behind it — both for finding work and for taking on projects independently — and web development fit that. Somewhere along the way, what started as a practical decision turned into something I'm genuinely into: taking an idea and making it real on screen, down to the smallest detail.\n\nThis site is one example of that — built and refined by hand. I'm also currently working on a more complex project, an admin dashboard that's still in progress, but it's the kind of thing I take seriously: real structure, real state management, not just a demo.\n\nI'm not pretending to have more experience than I do. But I show up for this every day, I care about getting the details right, and I'm looking for a place where that effort can actually go somewhere.",
     "hireMe": "Hire Me",
     "imageAlt": "About Me",
     "loginBtn": "Login / SignUp"
@@ -47,7 +47,8 @@
     "projectsCompleted": "Projects Completed",
     "clients": "Clients",
     "imageAlt": "Mahdi Abdollahi",
-    "loginBtn": "Login / SignUp"
+    "loginBtn": "Login / SignUp",
+    "downloadResume": "Download Resume (PDF)"
   },
 
   "navbar": {
@@ -58,8 +59,7 @@
     "contactMe": "Contact Me",
     "hireMe": "Hire Me",
     "hireMeBack": "Click Me!",
-    "loginSignUp": "Login / SignUp"
-    ,
+    "loginSignUp": "Login / SignUp",
     "logout": "LogOut"
   },
   "portfolio": {
@@ -67,9 +67,7 @@
     "loginBtn": "Login / SignUp",
     "tabs": {
       "all": "All",
-      "movieWebsite": "Movie Website",
-      "dashboard": "Dashboard",
-      "ecommerce": "E-Commerce"
+      "panel": "Dashboard"
     },
     "projects": {
       "zalva": {
@@ -83,33 +81,39 @@
     },
     "more": "View More"
   },
+  "portfolioBox": {
+    "category": {
+      "panel": "Dashboard"
+    },
+    "in-development": "Under Development"
+  },
   "services": {
     "title": "Services",
     "caption": "Professional web design and front-end development services tailored to your needs.",
     "items": {
       "webDevelopment": {
         "title": "Web Design & Development",
-        "description": "Designing and building websites from scratch based on your business needs and goals. The focus is on a modern appearance, well-structured layouts, and a smooth user experience. Websites are developed responsively for mobile, tablet, and desktop devices."
+        "description": "Building websites from the ground up — clean structure, modern design, and a layout that works just as well on phones, tablets, and desktops."
       },
       "frontend": {
-        "title": "Front-End Development",
-        "description": "Building the visual and interactive parts of websites using modern technologies. Clean code, scalable architecture, and attention to UI details are at the core of every project. The goal is to create a fast, smooth, and device-friendly experience."
+        "title": "UI Implementation from Design Files",
+        "description": "Turning design files into real, working pages — matching every detail across screen sizes, not just the desktop view."
       },
       "pageDesign": {
-        "title": "Page Design & Implementation",
-        "description": "Turning your ideas, wireframes, or design files into real, functional web pages. Every visual detail is carefully implemented and optimized to display properly across different screen sizes."
+        "title": "Development with React or Next.js",
+        "description": "Building interactive interfaces with React — components organized in a way that's easy to extend, not just code that works for now."
       },
       "reactNext": {
-        "title": "React & Next.js Development",
-        "description": "Building modern websites and user interfaces with React and Next.js. Organized and scalable structures are used for both small and large projects, with a focus on performance, speed, and a better web experience."
+        "title": "State Management with Redux",
+        "description": "Managing state in apps where a simple useState isn't enough — keeping data in sync across different parts of the interface."
       },
       "bugFixing": {
-        "title": "Bug Fixing & Optimization",
-        "description": "Identifying and fixing visual and technical front-end issues. Improving speed, performance, responsiveness, and code structure when needed. The goal is to turn a problematic website into a smoother and more stable experience for users."
+        "title": "Bug Fixing",
+        "description": "Finding and fixing frontend issues — the button that doesn't behave, the layout that breaks on a certain screen, the thing that's just not working right."
       },
       "fullProject": {
-        "title": "Complete Project Development",
-        "description": "If your project requires multiple specialists, I can coordinate the different parts of the project. The front-end development is handled by me, while I collaborate with the appropriate specialists for other areas."
+        "title": "Support for Bigger Projects",
+        "description": "When a project needs more than frontend, I handle that part myself and bring in the right people for the rest — like backend or SEO — so everything works together."
       }
     }
   },

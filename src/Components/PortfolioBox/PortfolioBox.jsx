@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./ProjectCard.module.css";
 import classNames from "classnames";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function ProjectCard({
   name,
-  category,
+  // category,
   year,
   tags = [],
   image,
   href = "#",
+  status, // "in-development" | undefined (undefined = completed, badge hidden)
 }) {
+  const { user } = useSelector((state) => state.auth);
+
   const [hovered, setHovered] = useState(false);
+
+  const { t } = useTranslation();
 
   return (
     <div
@@ -38,23 +46,45 @@ export default function ProjectCard({
           className={style["project-card__corner project-card__corner--bl"]}
         />
 
-        {category && (
-          <span className={style["project-card__badge"]}>{category}</span>
+        {/* {category && (
+          <span className={style["project-card__badge"]}>{t(category)}</span>
+        )} */}
+
+        {status === "in-development" && (
+          <span className={style["project-card__status"]}>
+            <span className={style["project-card__status-dot"]} />
+            {t("portfolioBox.in-development")}
+          </span>
         )}
 
         <div className={style["project-card__overlay"]}>
-          <a href={href} className={style["project-card__view-btn"]}>
-            مشاهده پروژه
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M15 5L8 12L15 19"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </a>
+          {user === null ? (
+            <Link to="/login" className={style["project-card__view-btn"]}>
+              ورود / ثبت نام
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M15 5L8 12L15 19"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </Link>
+          ) : (
+            <a href={href} className={style["project-card__view-btn"]}>
+              مشاهده پروژه
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M15 5L8 12L15 19"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+          )}
         </div>
       </div>
 
