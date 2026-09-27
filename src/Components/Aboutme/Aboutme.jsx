@@ -55,7 +55,7 @@ function Aboutme() {
           <div className={Styles.aboutMeLeft}>
             <div className={Styles.aboutMeImgWrapper}>
               <img
-                src="/image/Layer.webp"
+                src="image/Layer.webp"
                 alt={t("aboutMe.imageAlt")}
                 className={Styles.aboutMeImg}
               />
