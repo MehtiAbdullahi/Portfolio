@@ -60,7 +60,7 @@ export default function ProjectCard({
         <div className={style["project-card__overlay"]}>
           {user === null ? (
             <Link to="/login" className={style["project-card__view-btn"]}>
-              ورود / ثبت نام
+              {t("portfolio.loginBtn")}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path
                   d="M15 5L8 12L15 19"
