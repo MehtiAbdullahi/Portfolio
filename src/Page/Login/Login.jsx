@@ -54,7 +54,7 @@ const Login = () => {
             }),
           ).unwrap();
           setIsSubmitting(false);
-          navigate("/")
+          navigate("/");
         } catch (error) {
           if (error === "Invalid login credentials") {
             setAlerts((prev) => ({
@@ -125,25 +125,25 @@ const Login = () => {
         {(alerts.emptyInput && (
           <Alert
             duration="3000"
-            title="خطا"
+            title={t("login.alerts.error")}
             type="warning"
-            message="برای ادامه، لطفاً همه اطلاعات را وارد کنید."
+            message={t("login.alerts.text")}
           />
         )) ||
           (alerts.notValid && (
             <Alert
               duration="5000"
-              title="خطا"
+              title={t("login.alerts.error")}
               type="warning"
-              message="ایمیل شما معتبر نیست!"
+              message={t("login.alerts.text2")}
             />
           )) ||
           (alerts.invalidCredentials && (
             <Alert
               duration="5000"
-              title="خطا"
+              title={t("login.alerts.error")}
               type="error"
-              message="اطلاعات وارد شده نامعتبر است!"
+              message={t("login.alerts.text3")}
             />
           ))}
       </AnimatePresence>

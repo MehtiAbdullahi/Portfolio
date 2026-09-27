@@ -42,6 +42,7 @@ const SignUp = () => {
     emptyInput: false,
     notValid: false,
     sentConfirmMessage: false,
+    notValidEmail: false,
   });
 
   // ! handleSubmit
@@ -54,18 +55,25 @@ const SignUp = () => {
       password.trim().length
     ) {
       if (testPassword(password)) {
-        setAlerts((prev) => ({
-          ...prev,
-          sentConfirmMessage: true,
-        }));
-        setIsSubmitting(true);
-        try {
-          await dispatch(signUp({ username, email, password })).unwrap();
-          setIsSubmitting(false);
-          // navigate("/");
-        } catch (error) {
-          console.log(error);
-          setIsSubmitting(false);
+        if (testEmail(email)) {
+          setAlerts((prev) => ({
+            ...prev,
+            sentConfirmMessage: true,
+          }));
+          setIsSubmitting(true);
+          try {
+            await dispatch(signUp({ username, email, password })).unwrap();
+            setIsSubmitting(false);
+            // navigate("/");
+          } catch (error) {
+            console.log(error);
+            setIsSubmitting(false);
+          }
+        } else {
+          setAlerts((prev) => ({
+            ...prev,
+            notValidEmail: true,
+          }));
         }
       } else {
         setAlerts((prev) => ({
@@ -128,25 +136,33 @@ const SignUp = () => {
         {(alerts.emptyInput && (
           <Alert
             duration="3000"
-            title="خطا"
-            type="warning"
-            message="برای ادامه، لطفاً همه اطلاعات را وارد کنید."
+            title={t("signUp.alerts.error")}
+            type="error"
+            message={t("signUp.alerts.text")}
           />
         )) ||
           (alerts.notValid && (
             <Alert
               duration="5000"
-              title="خطا"
-              type="warning"
-              message="رمز شما معتبر نیست!"
+              title={t("signUp.alerts.error")}
+              type="error"
+              message={t("signUp.alerts.text2")}
             />
           )) ||
           (alerts.sentConfirmMessage && (
             <Alert
               duration="5000"
-              title="ایمیل خود را تأیید کنید"
+              title={t("signUp.alerts.verifyEmail")}
               type="success"
-              message="لینک تأیید حساب به ایمیل شما ارسال شد."
+              message={t("signUp.alerts.text3")}
+            />
+          )) ||
+          (alerts.notValidEmail && (
+            <Alert
+              duration="5000"
+              title={t("signUp.alerts.error")}
+              type="error"
+              message={t("signUp.alerts.text4")}
             />
           ))}
       </AnimatePresence>

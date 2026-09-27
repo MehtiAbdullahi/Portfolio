@@ -1,20 +1,20 @@
 {
   "contactUs": {
-    "defaultTitle": "Desired services",
+    "defaultTitle": "Select a Service",
     "contactMe": "Contact Me",
-    "contactCaption": "You can contact me for services or more information :)",
+    "contactCaption": "Feel free to reach out for services or more information :)",
     "name": "Name",
     "email": "Email",
     "phoneNumber": "Phone Number",
     "timeline": "Timeline",
-    "projectDetails": "Project Details...",
+    "projectDetails": "Project details...",
     "send": "Send",
-    "loginBtn": "Login / SignUp",
+    "loginBtn": "Log In / Sign Up",
     "services": {
-      "default": "Desired Service",
+      "default": "Select a Service",
       "webDesign": "Web Design",
       "portfolio": "Portfolio",
-      "pricing": "Design Pricing",
+      "pricing": "Pricing",
       "support": "Support"
     }
   },
@@ -22,10 +22,10 @@
   "aboutMe": {
     "title": "About Me",
     "caption": "Web Designer & Front-End Developer",
-    "description": "I'm Mehdi, a front-end developer who found his way here by actually building things.\n\nI never followed the conventional path. At some point I realized traditional schooling wasn't going to get me where I wanted to go, so I chose to learn on my own instead — going through courses, reading documentation, and figuring out what actually works by building it myself, one project at a time.\n\nFront-end wasn't some random pick, either. I wanted a skill with real opportunities behind it — both for finding work and for taking on projects independently — and web development fit that. Somewhere along the way, what started as a practical decision turned into something I'm genuinely into: taking an idea and making it real on screen, down to the smallest detail.\n\nThis site is one example of that — built and refined by hand. I'm also currently working on a more complex project, an admin dashboard that's still in progress, but it's the kind of thing I take seriously: real structure, real state management, not just a demo.\n\nI'm not pretending to have more experience than I do. But I show up for this every day, I care about getting the details right, and I'm looking for a place where that effort can actually go somewhere.",
+    "description": "I'm Mehdi, a front-end developer who found his path by actually building things.\n\nI didn't take the usual route. At some point I realized traditional education wasn't going to get me where I wanted to go, so I decided to teach myself — taking courses, reading documentation, and figuring out how things really work by building them, project after project.\n\nChoosing front-end wasn't random either. I was looking for a skill backed by real opportunity, both for landing a job and for freelance work, and web development fit that perfectly. Somewhere along the way, something that started as a practical decision turned into something I genuinely care about: taking an idea and making it real on the screen, down to the smallest detail.\n\nThis very site is one example — built by hand and refined many times over. Right now I'm also working on something more complex: an admin dashboard that isn't finished yet, but it's exactly the kind of project I take seriously — real architecture, real state management, not just a simple demo.\n\nI won't pretend my experience is more than it is. But I put in the time every day, I care about the details, and I'm looking for a place where that effort can actually lead somewhere.",
     "hireMe": "Hire Me",
     "imageAlt": "About Me",
-    "loginBtn": "Login / SignUp"
+    "loginBtn": "Log In / Sign Up"
   },
 
   "footer": {
@@ -34,20 +34,20 @@
     "aboutMe": "About Me",
     "portfolio": "Portfolio",
     "contactMe": "Contact Me",
-    "copyright": "Designed by TheMehti Front-End Developer"
+    "copyright": "Designed by TheMehti, Front-End Developer"
   },
 
   "hero": {
     "greeting": "Hi! I'm",
-    "name": "Mahdi Abdullahi!",
+    "name": "Mehdi Abdollahi!",
     "expertise": "Front-End Development",
     "hireMe": "Hire Me",
-    "portfolio": "My Portfolio",
-    "experience": "Experience",
-    "projectsCompleted": "Projects Completed",
-    "clients": "Clients",
-    "imageAlt": "Mahdi Abdollahi",
-    "loginBtn": "Login / SignUp",
+    "portfolio": "Portfolio",
+    "experience": "Learning & Project Development",
+    "projectsCompleted": "Projects Built",
+    "clients": "Technologies Mastered",
+    "imageAlt": "Mehdi Abdollahi",
+    "loginBtn": "Log In / Sign Up",
     "downloadResume": "Download Resume (PDF)"
   },
 
@@ -58,16 +58,16 @@
     "portfolio": "Portfolio",
     "contactMe": "Contact Me",
     "hireMe": "Hire Me",
-    "hireMeBack": "Click Me!",
-    "loginSignUp": "Login / SignUp",
-    "logout": "LogOut"
+    "hireMeBack": "Click here!",
+    "loginSignUp": "Log In / Sign Up",
+    "logout": "Log Out"
   },
   "portfolio": {
     "title": "Portfolio",
-    "loginBtn": "Login / SignUp",
+    "loginBtn": "Log In / Sign Up",
     "tabs": {
       "all": "All",
-      "panel": "Dashboard"
+      "panel": "Dashboards"
     },
     "projects": {
       "zalva": {
@@ -83,53 +83,54 @@
   },
   "portfolioBox": {
     "category": {
+      "all": "All",
       "panel": "Dashboard"
     },
-    "in-development": "Under Development"
+    "in-development": "In Development"
   },
   "services": {
     "title": "Services",
     "caption": "Professional web design and front-end development services tailored to your needs.",
     "items": {
       "webDevelopment": {
-        "title": "Web Design & Development",
-        "description": "Building websites from the ground up — clean structure, modern design, and a layout that works just as well on phones, tablets, and desktops."
+        "title": "Website Design & Development",
+        "description": "Building websites from scratch, with a focus on solid structure, a modern look, and an experience that works equally well on mobile, tablet, and desktop."
       },
       "frontend": {
-        "title": "UI Implementation from Design Files",
-        "description": "Turning design files into real, working pages — matching every detail across screen sizes, not just the desktop view."
+        "title": "Design-to-Code Implementation",
+        "description": "Turning design files (e.g. Figma) into real, functional pages, with pixel-perfect attention to detail across every screen size."
       },
       "pageDesign": {
-        "title": "Development with React or Next.js",
-        "description": "Building interactive interfaces with React — components organized in a way that's easy to extend, not just code that works for now."
+        "title": "React & Next.js Development",
+        "description": "Building interactive user interfaces with React, keeping the code organized and scalable — not just something that works for now."
       },
       "reactNext": {
         "title": "State Management with Redux",
-        "description": "Managing state in apps where a simple useState isn't enough — keeping data in sync across different parts of the interface."
+        "description": "Managing application state for apps where a simple useState isn't enough, keeping data in sync across every part of the UI."
       },
       "bugFixing": {
         "title": "Bug Fixing",
-        "description": "Finding and fixing frontend issues — the button that doesn't behave, the layout that breaks on a certain screen, the thing that's just not working right."
+        "description": "Finding and fixing front-end issues — a button that isn't behaving, a layout that breaks at a certain screen size, or anything that just isn't working the way it should."
       },
       "fullProject": {
-        "title": "Support for Bigger Projects",
-        "description": "When a project needs more than frontend, I handle that part myself and bring in the right people for the rest — like backend or SEO — so everything works together."
+        "title": "Support for Larger Projects",
+        "description": "If a project needs more than just front-end work, I handle the front-end myself and bring in the right people for the rest (like back-end or SEO) so we can work together smoothly."
       }
     }
   },
   "common": {
-    "backToHome": "Back to homepage",
+    "backToHome": "Back to Home",
     "back": "Back",
     "next": "Next",
-    "submit": "Submit request"
+    "submit": "Submit Request"
   },
   "hireMe": {
     "title": "Hire Me",
-    "subtitle": "Share your project details with me so I can get back to you as quickly as possible."
+    "subtitle": "Share your project details with me and I'll get back to you as soon as possible."
   },
   "steps": {
     "service": {
-      "label": "Service",
+      "label": "Services",
       "heading": "What service do you need?",
       "description": "You can select more than one option."
     },
@@ -139,28 +140,28 @@
       "titleLabel": "Project Title",
       "titlePlaceholder": "e.g. E-commerce website design",
       "descriptionLabel": "Project Description",
-      "descriptionPlaceholder": "Tell me anything you think I should know...",
+      "descriptionPlaceholder": "Tell me anything you think I should know about the project...",
       "referenceLabel": "Reference Link (optional)",
-      "referencePlaceholder": "Link to a similar website, Figma file, etc."
+      "referencePlaceholder": "A similar website, a Figma file, etc."
     },
     "budget": {
       "label": "Budget & Timeline",
       "heading": "Budget & Timeline",
       "budgetLabel": "Estimated Budget",
-      "deadlineLabel": "Preferred Deadline"
+      "deadlineLabel": "Preferred Delivery Time"
     },
     "contact": {
-      "label": "Contact Info",
+      "label": "Contact Information",
       "heading": "Contact Information",
       "nameLabel": "Full Name",
       "namePlaceholder": "Your name",
       "emailLabel": "Email",
       "emailPlaceholder": "example@email.com",
       "phoneLabel": "Phone Number (optional)",
-      "phonePlaceholder": "+1 234 567 8900",
+      "phonePlaceholder": "+1 555 123 4567",
       "methodLabel": "Preferred Contact Method",
       "summary": {
-        "title": "Order Summary",
+        "title": "Request Summary",
         "servicesLabel": "Services:",
         "titleLabel": "Title:",
         "budgetLabel": "Budget:",
@@ -170,11 +171,21 @@
   },
   "servicesHireMePage": {
     "items": {
-      "fullsite": { "title": "Full Website Design & Development" },
-      "frontend": { "title": "Front-End Development" },
-      "figma": { "title": "Figma to Code Conversion" },
-      "fixbug": { "title": "Bug Fixing & Site Optimization" },
-      "other": { "title": "Other Service" }
+      "fullsite": {
+        "title": "Full Website Design & Development"
+      },
+      "frontend": {
+        "title": "Front-End Development"
+      },
+      "figma": {
+        "title": "Figma-to-Code Conversion"
+      },
+      "fixbug": {
+        "title": "Bug Fixing & Site Optimization"
+      },
+      "other": {
+        "title": "Other Services"
+      }
     }
   },
   "budgets": {
@@ -189,9 +200,9 @@
   "deadlines": {
     "items": {
       "urgent": "Urgent (under 1 week)",
-      "oneToTwoWeeks": "1–2 weeks",
-      "threeToFourWeeks": "3–4 weeks",
-      "overOneMonth": "More than 1 month",
+      "oneToTwoWeeks": "1 – 2 weeks",
+      "threeToFourWeeks": "3 – 4 weeks",
+      "overOneMonth": "Over 1 month",
       "flexible": "Flexible timeline"
     }
   },
@@ -203,42 +214,66 @@
     }
   },
   "validation": {
-    "selectService": "Please select at least one service",
-    "projectDetails": "Please enter a project title and description",
-    "budgetDeadline": "Please specify a budget and timeline",
-    "nameEmail": "Name and email are required"
+    "selectService": "Please select at least one service.",
+    "projectDetails": "Please enter a project title and description.",
+    "budgetDeadline": "Please specify the project's budget and timeline.",
+    "nameEmail": "Name and email are required."
   },
   "success": {
-    "title": "Your request has been submitted successfully",
-    "message": "Thank you for trusting me, {{name}}. I'll reach out to you soon via {{contactMethod}}.",
-    "newRequest": "Submit a new request"
+    "title": "Your Request Was Sent Successfully",
+    "message": "Thank you for your trust, {{name}}. I'll get back to you soon via {{contactMethod}}.",
+    "newRequest": "Submit a New Request"
   },
   "login": {
-    "title": "Login to your account",
-    "text": "Welcome back! Enter your phone number and password to continue",
+    "title": "Log In",
+    "text": "Welcome back! Enter your number and password to continue",
     "placeHolderPass": "Password",
     "placeHolderEmail": "Email",
-    "btnText": "Login",
+    "btnText": "Log In",
     "text2": "Don't have an account?",
-    "text3": "Sign up"
+    "text3": "Sign up",
+    "alerts": {
+      "error": "Error",
+      "warning": "Warning",
+      "success": "Success",
+      "text": "Please fill in all the fields to continue.",
+      "text2": "Your email is not valid!",
+      "text3": "The information entered is invalid!"
+    }
   },
   "signUp": {
-    "title": "Create an account",
-    "text": "Just a few steps left enter your details",
+    "title": "Create an Account",
+    "text": "Just a few steps to get started — enter your details",
     "placeHolderUsername": "Username",
     "placeHolderEmail": "Email",
     "placeHolderPass": "Password",
-    "btnText": "Sign up",
+    "btnText": "Sign Up",
     "text2": "Already have an account?",
-    "text3": "Login"
+    "text3": "Log in",
+    "rules": {
+      "rule1": "Password must be at least 8 characters",
+      "rule2": "Password must contain at least one uppercase letter",
+      "rule3": "Password must contain at least one lowercase letter",
+      "rule4": "Password must contain at least one special character",
+      "rule5": "Password must contain at least one number"
+    },
+    "notValidEmail": "Email is not valid.",
+    "alerts": {
+      "error": "Error",
+      "verifyEmail": "Verify your email",
+      "text": "Please fill in all the fields to continue.",
+      "text2": "Your password is not valid!",
+      "text3": "A verification link has been sent to your email.",
+      "text4": "Your email is invalid!"
+    }
   },
   "verify": {
-    "title": "Enter the verification code.",
-    "text": "4-digit code for the number",
-    "text2": "It was sent via SMS.",
-    "btn": "Verify code",
+    "title": "Enter the Verification Code",
+    "text": "A 4-digit code was sent to",
+    "text2": "via SMS",
+    "btn": "Verify Code",
     "resendCode": "Resend code in",
-    "editPhoneNumber": "Edit phone number",
-    "error": "The entered code is incorrect!"
+    "editPhoneNumber": "Edit Phone Number",
+    "error": "The code you entered is incorrect!"
   }
 }
