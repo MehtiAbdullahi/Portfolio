@@ -12,6 +12,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
+  max-width: 100%;
   gap: 4rem;
   margin-top: 2rem;
 }
@@ -24,7 +26,8 @@
   background-color: #1e1e1e;
   width: 100%;
   max-width: 35rem;
-  height: 35rem;
+  height: 100%;
+  max-height: 35rem;
   padding: 4rem 2rem;
   border-radius: 1rem;
   transition: all 200ms ease-out;
@@ -62,6 +65,7 @@
   color: #fd6f00;
   font-size: 2.5rem;
   text-align: center;
+  text-wrap: wrap;
 }
 
 [dir="ltr"] .serviceName {
@@ -74,6 +78,8 @@
   font-size: 2rem;
   font-weight: 200;
   text-align: center;
+  width: 100%;
+  max-width: 40rem;
   height: 100%;
   max-height: 350px;
 }
@@ -95,7 +101,23 @@
 @media (max-width: 1400px) {
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
+  .servicesWrapper {
+    gap: 2rem;
+  }
+
+  .service {
+    padding: 2rem 1rem;
+  }
+
+  .serviceName {
+    font-size: 2rem;
+  }
+
+  .serviceDescription {
+    font-size: 1.5rem;
+    max-width: 25rem;
+  }
 }
 
 @media (max-width: 992px) {
@@ -109,10 +131,18 @@
 
 @media (max-width: 426px) {
   .service {
-    width: 29rem;
-    padding: 3rem 1rem;
+    padding: 1rem 0.5rem;
   }
+
   .servicesWrapper {
     gap: 3rem;
+  }
+
+  .serviceName {
+    font-size: 1.7rem;
+  }
+
+  .serviceDescription {
+    font-size: 1.5rem;
   }
 }
