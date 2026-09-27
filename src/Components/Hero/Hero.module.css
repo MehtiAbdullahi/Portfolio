@@ -502,4 +502,22 @@
   .heroBackground {
     height: 81rem;
   }
+  .heroBtns {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .allWorks {
+    flex-direction: column;
+  }
+  .allWorksRxperiences,
+  .allWorksProjectDone,
+  .allWorksClients {
+    padding: 1rem 2rem;
+  }
+  .allWorksProjectDone {
+    border-right: none;
+    border-left: none;
+    border-top: 1px solid var(--color-959595);
+    border-bottom: 1px solid var(--color-959595);
+  }
 }
