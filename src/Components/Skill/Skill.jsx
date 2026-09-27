@@ -2,20 +2,18 @@ import React, { useEffect, useRef, useState } from "react";
 import Styles from "./Skill.module.css";
 import AnimatedSection from "../Animation/AnimatedSection";
 import { fadeUp } from "../../Animations/Animations";
-import { ImHtmlFive2 } from "react-icons/im";
-import { ImCss3 } from "react-icons/im";
-import { RiTailwindCssFill } from "react-icons/ri";
 import { TbBrandJavascript } from "react-icons/tb";
 import { GrReactjs } from "react-icons/gr";
 import { TbBrandNextjs } from "react-icons/tb";
+import { SiRedux } from "react-icons/si";
+import { TbBrandTypescript } from "react-icons/tb";
 
 const skills = [
-  { name: "NextJs", percent: 30, icon: TbBrandNextjs },
-  { name: "ReactJs", percent: 75, icon: GrReactjs },
+  { name: "NextJs", percent: 70, icon: TbBrandNextjs },
+  { name: "ReactJs", percent: 70, icon: GrReactjs },
+  { name: "TypeScript", percent: 85, icon: TbBrandTypescript },
   { name: "JavaScript", percent: 75, icon: TbBrandJavascript },
-  { name: "TailwindCss", percent: 90, icon: RiTailwindCssFill },
-  { name: "Css", percent: 95, icon: ImCss3 },
-  { name: "Html", percent: 95, icon: ImHtmlFive2 },
+  { name: "Redux", percent: 85, icon: SiRedux },
 ];
 
 function SkillItem({ skill, index }) {

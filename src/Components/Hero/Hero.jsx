@@ -84,8 +84,8 @@ function Hero() {
                   Styles.downloadResume,
                   Styles.myPortfolioBtn,
                 )}
-                href="/assets/resume/mehti_abdollahi_resume.pdf"
-                download="mehti_abdollahi_resume.pdf"
+                href={`${import.meta.env.BASE_URL}assets/resume/mehti_abdullahi_resume.pdf`}
+                download="mehti_abdullahi_resume.pdf"
               >
                 {t("hero.downloadResume")}
               </a>
