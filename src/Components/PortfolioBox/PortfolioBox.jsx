@@ -72,7 +72,7 @@ export default function ProjectCard({
               </svg>
             </Link>
           ) : (
-            <a href={href} className={style["project-card__view-btn"]}>
+            <a href={href} target="_blank" className={style["project-card__view-btn"]}>
               مشاهده پروژه
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path
