@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
 const HireMePage = lazy(() => import("./Page/HireMePage/HireMePage"));
 const Landing = lazy(() => import("./Page/Landing/Landing"));
 const Login = lazy(() => import("./Page/Login/Login"));

@@ -84,7 +84,7 @@ function Hero() {
                   Styles.downloadResume,
                   Styles.myPortfolioBtn,
                 )}
-                href={`${import.meta.env.BASE_URL}/resume/mehti_abdullahi_resume.pdf`}
+                href={`${import.meta.env.BASE_URL}resume/mehti_abdullahi_resume.pdf`}
                 download="mehti_abdullahi_resume.pdf"
               >
                 {t("hero.downloadResume")}
@@ -113,7 +113,7 @@ function Hero() {
             <div className={Styles.frame}>
               <div className={Styles.hairline}></div>
               <div className={Styles.portrait}>
-                <img src={`${import.meta.env.BASE_URL}/image/Layer-21.webp`} />
+                <img src={`${import.meta.env.BASE_URL}image/Layer-21.webp`} />
                 <div className={Styles.sheen}></div>
               </div>
             </div>
