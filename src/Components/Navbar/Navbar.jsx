@@ -38,19 +38,19 @@ useEffect(() => {
   const originalScrollBehavior = html.style.scrollBehavior;
   
   if (showMenu) {
-    html.style.scrollBehavior = 'auto'; // موقتاً smooth رو خاموش کن
+    // html.style.scrollBehavior = 'auto'; 
     const scrollY = window.scrollY;
-    document.body.style.position = 'fixed';
+    // document.body.style.position = 'fixed';
     document.body.style.top = `-${scrollY}px`;
     document.body.style.width = '100%';
     document.body.style.overflow = 'hidden';
   } else {
-    const scrollY = document.body.style.top;
-    document.body.style.position = '';
+    // const scrollY = document.body.style.top;
+    // document.body.style.position = '';
     document.body.style.top = '';
     document.body.style.width = '';
     document.body.style.overflow = '';
-    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    // window.scrollTo(0, parseInt(scrollY || '0') * -1);
     html.style.scrollBehavior = originalScrollBehavior;
   }
 }, [showMenu]);
@@ -184,7 +184,7 @@ useEffect(() => {
               </li>
 
               <li className={Styles.menuListItem}>
-                <a href="#contactme" className={Styles.menuListItemLink}>
+                <a href="#contactUs" className={Styles.menuListItemLink}>
                   {t("navbar.contactMe")}
                 </a>
               </li>
