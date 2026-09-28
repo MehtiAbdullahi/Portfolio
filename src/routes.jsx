@@ -1,14 +1,20 @@
-import HireMePage from "./Page/HireMePage/HireMePage";
-import Landing from "./Page/Landing/Landing";
-import Login from "./Page/Login/Login";
-import SignUp from "./Page/SignUp/SignUp";
-import VerifyCode from "./Page/VerifyCode/VerifyCode";
+import { lazy } from "react";
+const HireMePage = lazy(() => import("./Page/HireMePage/HireMePage"));
+const Landing = lazy(() => import("./Page/Landing/Landing"));
+const Login = lazy(() => import("./Page/Login/Login"));
+const SignUp = lazy(() => import("./Page/SignUp/SignUp"));
+const VerifyCode = lazy(() => import("./Page/VerifyCode/VerifyCode"));
+const Loader = lazy(() => import("./Components/Animation/Loader/Loader"));
+
+const withSuspense = (element) => (
+  <Suspense fallback={<Loader variant="inline" />}>{element}</Suspense>
+);
 
 let routes = [
-  { path: "/", element: <Landing /> },
-  { path: "/hire-me", element: <HireMePage /> },
-  { path: "/login", element: <Login /> },
-  { path: "/signup", element: <SignUp /> },
+  { path: "/", element: withSuspense(<Landing />) },
+  { path: "/hire-me", element: withSuspense(<HireMePage />) },
+  { path: "/login", element: withSuspense(<Login />) },
+  { path: "/signup", element: withSuspense(<SignUp />) },
   // { path: "/verify", element: <VerifyCode /> },
 ];
 

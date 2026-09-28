@@ -12,35 +12,35 @@
 
 @font-face {
   font-family: lato;
-  src: url(../public/font/Lato-Light.ttf) format(woff2);
+  src: url(../public/font/Lato-Light.woff2) format(woff2);
   font-weight: 100;
   font-style: normal;
 }
 
 @font-face {
   font-family: lato;
-  src: url(../public/font/Lato-Regular.ttf) format(woff2);
+  src: url(../public/font/Lato-Regular.woff2) format(woff2);
   font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
   font-family: lato;
-  src: url(../public/font/Lato-Bold.ttf) format(woff2);
+  src: url(../public/font/Lato-Bold.woff2) format(woff2);
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: lato;
-  src: url(../public/font/Lato-Black.ttf) format(woff2);
+  src: url(../public/font/Lato-Black.woff2) format(woff2);
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: logo-singer;
-  src: url(../public/font/JAKIO.ttf) format(woff2);
+  src: url(../public/font/JAKIO.woff2) format(woff2);
   font-style: normal;
 }
 
