@@ -71,7 +71,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 95%;
+  /* max-width: 95%; */
   height: auto;
   z-index: 2;
 }

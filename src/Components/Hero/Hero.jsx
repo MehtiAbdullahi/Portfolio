@@ -113,8 +113,7 @@ function Hero() {
             <div className={Styles.frame}>
               <div className={Styles.hairline}></div>
               <div className={Styles.portrait}>
-                <img src={`${import.meta.env.BASE_URL}image/Layer-21.webp`} />
-                <div className={Styles.sheen}></div>
+                <img src={`${import.meta.env.BASE_URL}image/my51.webp`} />
               </div>
             </div>
           </div>
