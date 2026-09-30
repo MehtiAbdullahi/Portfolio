@@ -30,7 +30,7 @@ export default function ProjectCard({
       onMouseLeave={() => setHovered(false)}
     >
       <div className={style["project-card__media"]}>
-        <img src={image} alt={name} className={style["project-card__image"]} />
+        <img src={image ? image : `${import.meta.env.BASE_URL}image/project image not available.webp`} alt={name} className={style["project-card__image"]} />
         <div className={style["project-card__gradient"]} />
 
         <span

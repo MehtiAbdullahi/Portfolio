@@ -66,6 +66,10 @@
   /* position: relative; */
 }
 
+.portfolioBoxs :global(.themehti-loader-wrapper) {
+  margin-top: 10rem;
+}
+
 .portfolioBox {
   display: flex;
   flex-direction: column;
