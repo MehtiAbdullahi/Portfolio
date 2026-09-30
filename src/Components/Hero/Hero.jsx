@@ -34,9 +34,31 @@ function Hero() {
             <h1 className={Styles.heroExpertise}>
               <TypeIt
                 options={{
-                  strings: [t("hero.expertise")],
-                  speed: 50,
+                  speed: 60,
+                  deleteSpeed: 35,
                   waitUntilVisible: true,
+                  loop: true,
+                }}
+                getBeforeInit={(instance) => {
+                  instance
+                    .type("Front-End Developer")
+                    .pause(2000)
+                    .delete()
+                    .pause(500)
+                    .type("Responsive Web Developer")
+                    .pause(2000)
+                    .delete()
+                    .pause(500)
+                    .type("React Developer")
+                    .pause(2000)
+                    .delete()
+                    .pause(500)
+                    .type("Next.js Developer")
+                    .pause(2000)
+                    .delete()
+                    .pause(500);
+
+                  return instance;
                 }}
               />
               <span className={Styles.heroExpertiseCrusor}></span>
@@ -45,7 +67,7 @@ function Hero() {
             <div className={Styles.heroSocials}>
               <a
                 className={Styles["heroSocialLink"]}
-                href="https://www.linkedin.com/in/mahdiabdullahi/"
+                href="https://www.linkedin.com/in/mehtiabdullahi"
                 target="_blank"
               >
                 <CiLinkedin />
@@ -98,7 +120,7 @@ function Hero() {
                 </div>
 
                 <div className={Styles.allWorksProjectDone}>
-                  <h4>5+</h4>
+                  <h4>2+</h4>
                   <span>{t("hero.projectsCompleted")}</span>
                 </div>
 

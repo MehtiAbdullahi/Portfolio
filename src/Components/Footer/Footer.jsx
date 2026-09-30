@@ -49,7 +49,7 @@ function Footer() {
           <div className={Styles.footerSocials}>
             <a
               className={Styles.footerSocialLink}
-              href="https://www.linkedin.com/in/mahdiabdullahi/"
+              href="https://www.linkedin.com/in/mehtiabdullahi"
               target="_blank"
             >
               <CiLinkedin />

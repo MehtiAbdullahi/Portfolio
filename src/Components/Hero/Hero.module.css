@@ -62,6 +62,7 @@
   position: relative;
   max-width: 72rem;
   min-width: 10%;
+  line-height: 1.2;
 }
 
 @keyframes gradientMove {
@@ -458,7 +459,8 @@
     gap: 5rem;
   }
   .heroExpertise {
-    font-size: 3rem;
+    font-size: 4rem;
+    max-width: 22rem;
   }
   .heroSocials {
     gap: 2rem;
