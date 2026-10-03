@@ -11,7 +11,7 @@ import { TbBrandTypescript } from "react-icons/tb";
 const skills = [
   { name: "NextJs", percent: 70, icon: TbBrandNextjs },
   { name: "ReactJs", percent: 70, icon: GrReactjs },
-  { name: "TypeScript", percent: 85, icon: TbBrandTypescript },
+  { name: "TypeScript", percent: 65, icon: TbBrandTypescript },
   { name: "JavaScript", percent: 75, icon: TbBrandJavascript },
   { name: "Redux", percent: 85, icon: SiRedux },
 ];
